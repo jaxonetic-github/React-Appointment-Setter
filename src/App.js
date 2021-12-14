@@ -1,6 +1,6 @@
 import React from "react";
 import MainComponent from "./home/MainComponent.js";
-import {BrowserRouter as Router, Routes, Route} from 'react-router-dom';
+import {HashRouter as Router, Routes, Route} from 'react-router-dom';
 import GeneralInfo from './home/GeneralInfo';
 import Reservations from './checkout/Reservations';
 import Checkout from './checkout/Checkout';
@@ -27,7 +27,7 @@ function App() {
 console.log(process.env.REACT_APP_WEBPATH,',',process.env.PUBLIC_URL)
   const bgColor = 'transparent';// 'cadetblue';
   return (
-    <Router basename='/React-Appointment/Setter' >
+    <Router>
     <Routes >
           <Route   element={<MainComponent companyTitle={COMPANY_NAME} bannerURL={HOME_BANNER_URL} />} >
              <Route  index   element={<AppointmentHome  bgColor={bgColor}/>} />
