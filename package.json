@@ -2,6 +2,7 @@
   "name": "carrental",
   "version": "0.1.0",
   "private": true,
+  "hostname":"/React-AppointmentSetter",
   "dependencies": {
     "@aldabil/react-scheduler": "^2.0.0",
     "@apollo/client": "^3.4.16",
