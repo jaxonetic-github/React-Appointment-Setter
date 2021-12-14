@@ -29,9 +29,9 @@ console.log(process.env.REACT_APP_WEBPATH,',',process.env.PUBLIC_URL)
   return (
     <Router>
     <Routes >
-          <Route   element={<MainComponent companyTitle={COMPANY_NAME} bannerURL={HOME_BANNER_URL} />} >
+          <Route path='/'  element={<MainComponent companyTitle={COMPANY_NAME} bannerURL={HOME_BANNER_URL} />} >
              <Route  index   element={<AppointmentHome  bgColor={bgColor}/>} />
-             <Route path={"profile"} element={<Profile bgColor={bgColor} />} />
+             <Route path={"/profile"} element={<Profile bgColor={bgColor} />} />
              <Route  path={'signin'} element={<SignIn bgColor={bgColor} />} />
              <Route  path={"availabilityCalendar"} element={<FullScreenAgendaDialog  bgColor={bgColor} displayAs={'full'} />} />
              <Route  path={"signup"} element={<SignUp bgColor={bgColor} />} />
