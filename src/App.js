@@ -8,7 +8,7 @@ import Profile from './profile/Profile';
 import SignIn from './signinup/Signin';
 import SignUp from './signinup/Signup';
 import AppointmentHome from './home/appointmentHome.js';
-import {HOME_BANNER_URL, COMPANY_NAME} from './altconstants.js'
+import {HOME_BANNER_URL, COMPANY_NAME} from './constants.js'
 //import { useIdleTimer } from 'react-idle-timer';
 import FullScreenAgendaDialog from './calendars/fullScreenAgendaDialog.js'
 
@@ -27,7 +27,7 @@ function App() {
 console.log(process.env.REACT_APP_WEBPATH,',',process.env.PUBLIC_URL)
   const bgColor = 'transparent';// 'cadetblue';
   return (
-    <Router basename='/' >
+    <Router basename='/React-Appointment/Setter' >
     <Routes >
           <Route   element={<MainComponent companyTitle={COMPANY_NAME} bannerURL={HOME_BANNER_URL} />} >
              <Route  index   element={<AppointmentHome  bgColor={bgColor}/>} />

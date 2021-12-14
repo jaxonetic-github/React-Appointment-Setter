@@ -29,7 +29,7 @@ import FullScreenAgendaDialog from '../calendars/fullScreenAgendaDialog.js'
 import {useNavigate} from "react-router-dom";
 import Grid from '@mui/material/Grid';
 import Fade from '@mui/material/Fade';
-import {APPBAR_INITIAL_COLOR, APPBAR_INITIAL_HEIGHT} from '../altconstants.js'
+import {APPBAR_INITIAL_COLOR, APPBAR_INITIAL_HEIGHT} from '../constants.js'
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 
 /**
