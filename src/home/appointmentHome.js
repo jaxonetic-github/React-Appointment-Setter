@@ -44,11 +44,11 @@ const url = 'coveredInFlowers.jpeg';
       <CssBaseline />
 
 <Container sx={{margin:5, backgroundColor: bgColor}}>
-    <Grid container spacing={3} columns={6}>
-  <Grid item xs={3}>
+    <Grid container spacing={2}>
+  <Grid item xs={8} md={6}>
      <Card><CardMedia component="img" alt="banner" image={url} /></Card>
   </Grid>
-  <Grid item xs={3}>
+  <Grid item xs={8} md={4}>
   <Card><CardHeader title={'Massage & Reiki Therapy'}  titleTypographyProps={{ align: 'center' }}     >Massage Therapy</CardHeader>
   <CardContent> Massage, cupping and reiki</CardContent>
   <CardContent>Welcome to your portal for private alternative care.  I specialize in working

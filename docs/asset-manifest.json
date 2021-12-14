@@ -1,8 +1,8 @@
 {
   "files": {
     "main.css": "/React-Appointment-Setter/static/css/main.6ad78e91.chunk.css",
-    "main.js": "/React-Appointment-Setter/static/js/main.9e2ba8dd.chunk.js",
-    "main.js.map": "/React-Appointment-Setter/static/js/main.9e2ba8dd.chunk.js.map",
+    "main.js": "/React-Appointment-Setter/static/js/main.52543f94.chunk.js",
+    "main.js.map": "/React-Appointment-Setter/static/js/main.52543f94.chunk.js.map",
     "runtime-main.js": "/React-Appointment-Setter/static/js/runtime-main.ac5572ad.js",
     "runtime-main.js.map": "/React-Appointment-Setter/static/js/runtime-main.ac5572ad.js.map",
     "static/js/2.4b99744c.chunk.js": "/React-Appointment-Setter/static/js/2.4b99744c.chunk.js",
@@ -17,6 +17,6 @@
     "static/js/runtime-main.ac5572ad.js",
     "static/js/2.4b99744c.chunk.js",
     "static/css/main.6ad78e91.chunk.css",
-    "static/js/main.9e2ba8dd.chunk.js"
+    "static/js/main.52543f94.chunk.js"
   ]
 }
