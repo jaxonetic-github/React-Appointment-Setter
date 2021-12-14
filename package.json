@@ -1,8 +1,8 @@
 {
-  "name": "carrental",
+  "name": "React-Appointment-Setter",
   "version": "0.1.0",
   "private": true,
-  "hostname":"https://jaxonetic-github.github.io/React-Appointment-Setter",
+  "homepage":"https://jaxonetic-github.github.io/React-Appointment-Setter",
   "dependencies": {
     "@aldabil/react-scheduler": "^2.0.0",
     "@apollo/client": "^3.4.16",
