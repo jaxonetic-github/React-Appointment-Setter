@@ -10,7 +10,6 @@ body {
   -moz-osx-font-smoothing: grayscale;
 }
 
-.css-11b3ww9-MuiPaper-root-MuiAppBar-root {background-color:'red' !important}
 
 .css-1u4zpwo-MuiSvgIcon-root-MuiStepIcon-root.Mui-completed {
      color: 'inherit' !important; 
@@ -25,6 +24,9 @@ body {
 
 /* Over-writing the default container style */
 .css-1u8t36f-MuiContainer-root{padding-top: 34px !important;}
+
+
+/* Force TOdat, month, week, day nav on calendar to be horizontal  */
 #root > div > div:nth-child(2) > div._2Ryc0EdrAlBmLFgxh2MAWb > div:nth-child(2) {display: flex}
 code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',

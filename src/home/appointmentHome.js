@@ -6,7 +6,8 @@ import Button from '@mui/material/Button';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import Input from '@mui/material/Input';
 import FullScreenAgendaDialog from '../calendars/fullScreenAgendaDialog.js'
-
+import  Divider  from '@mui/material/Divider';
+import  Box  from '@mui/material/Box';
 
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
@@ -54,12 +55,14 @@ const url = 'coveredInFlowers.jpeg';
   <CardContent>Welcome to your portal for private alternative care.  I specialize in working
   with athletes and healthcare workers or those who have higly stressful professions.</CardContent>
   
- <CardActions>
-     <Button variant='outlined' fullWidth size="large" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
-     <Button variant='outlined' fullWidth size="large" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
 
-      </CardActions>
   </Card>
+   <Box>
+     <Button variant='outlined' fullWidth size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
+
+     <Button variant='outlined' fullWidth size="small" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
+
+      </Box>
   </Grid>
 
 </Grid>
