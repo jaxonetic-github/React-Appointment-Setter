@@ -118,7 +118,7 @@ const location = useLocation();
                
               </Menu>
       }
-         {hasProfileSelector? `Hello,${authedUserSelector?.firstname}` : ''}
+         {hasProfileSelector? `Hello,${authedUserSelector?.firstname}` : hasProfileSelector}
         </Toolbar>
       </AppBar>
    

@@ -16,6 +16,8 @@ import {  OnChangeValue } from 'react-select';
  */
  function SetAppointmentFragment({onChange}) {
 
+ const [selectedLocation, setSelectedLocation] = React.useState('');
+
   const currentUser = useSelector((state)=>state.profile);
 
 const isPasswdNeeded = (currentUser?.email==null);
@@ -29,8 +31,8 @@ const locations = [{label:'Alchemeia Center', value:'262 E Pastime rd, Tucson Az
       <Typography variant="h6" sx={{marginBottom:3, marginTop:3}} >
         Appointment Location
       </Typography>
-        
-        <CreatableSelect name='locationSelect' isClearable onChange={(event)=>{ const newArg={target:{name:'locationSelect', value:event.value} };  onChange(newArg);}} options={locations}/>
+        <h6>{selectedLocation}</h6>
+        <CreatableSelect name='locationSelect' isClearable onChange={(event)=>{ const newArg={target:{name:'locationSelect', value:event.value} }; setSelectedLocation(event.value) ; onChange(newArg);}} options={locations}/>
       
       <Typography variant="h6" sx={{marginBottom:3, marginTop:3}} >
         Contact Info

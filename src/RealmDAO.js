@@ -1,5 +1,5 @@
 import * as Realm from "realm-web";
-import { handleAuthenticationError, parseAuthenticationError} from './constants';
+import { handleAuthenticationError, parseAuthenticationError, APP_NOTIFICATIONS} from './constants';
     import emailjs, { init } from 'emailjs-com';
 
 /**
@@ -131,7 +131,7 @@ console.log(credentials)
          //add CustomData
          await this.app?.currentUser?.functions?.AddUserData({...registerData, userid:this.app?.currentUser?.id});
     
-          return  this.reloadCustomData();
+          return  this.refreshCustomData();
 
     }catch(err1){console.log("errer adding userdata",err1)}
        // const prof = await newUser.functions.GetUserData(newUser.id);
@@ -255,19 +255,17 @@ this.setSiteData({screen:'home_general',pageData:newPageData.pageData, contactDa
 
     const newReservation = {...reservation, dateAdded :(new Date()), userid:this.app.currentUser?.id };
    const result = await this.app.currentUser?.functions.InsertReservation(newReservation);
-
+console.log(process.env.REACT_APP_BLOCK_NOTIFY_ON_RESERVE,' , ',process.env.REACT_APP_SERVICEID );
 //allow env variable to prevent email/text notifications
-if(!process.env.REACT_APP_BLOCK_NOTIFY_ON_RESERVE){
-    //dispatch(createAction('SENDING_EMAIL/SMS_NOTIFICATION')())
+if(APP_NOTIFICATIONS){
     init(process.env.REACT_APP_EMAILJS_USERID);
     const message = `Reservation requested from (${newReservation.firstName} ${newReservation.lastName}). Contact Info:${newReservation.phone}, ${newReservation.email}`;
      const emailTemplate  = 
-     {to_name:'Awan', from_name:'8Angels Transportation Email Notifier',
+     {to_name:'Alora', from_name:'Alchemeia Notifier',
       message:message};
 
 
     const emailResult = await emailjs.send(process.env.REACT_APP_SERVICEID, process.env.REACT_APP_EMAILJS_TEMPLATEID, emailTemplate, process.env.REACT_APP_EMAILJS_USERID).then((result)=>console.log('Notification Success', result),(error)=>console.log('Notification Error', error));
-    console.log("Notification Result",emailResult);
     }
  return result;
 }

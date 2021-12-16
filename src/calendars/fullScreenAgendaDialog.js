@@ -35,7 +35,8 @@ export default function FullScreenAgendaDialog({displayAs, onConfirm}) {
  const scheduledItems = useSelector((state)=>state?.availability);
  const state = useSelector((state)=>state);
  const dispatch = useDispatch();
-  const [open, setOpen] = React.useState(false);
+ const [open, setOpen] = React.useState(false);
+  const [selectedDateTime, setSelectedDateTime] = React.useState('');
  const theme = useTheme();
   const fullScreen = useMediaQuery(theme?.breakpoints?.down('md'));
   const handleClickOpen = () => {
@@ -52,6 +53,9 @@ export default function FullScreenAgendaDialog({displayAs, onConfirm}) {
           event_id: event.event_id || Math.random(),
         }
     const finalEvent =  {target:{name:'appointmentDateTime',value:stampedEvent } };
+   
+       console.log(stampedEvent,'****************',typeof stampedEvent.start.toUTCString())
+    setSelectedDateTime(stampedEvent.start.toUTCString());
        if(onConfirm)
         onConfirm(finalEvent);
     
@@ -74,18 +78,28 @@ export default function FullScreenAgendaDialog({displayAs, onConfirm}) {
 
 
 
-const AccordionView = ({children})=><Accordion>
+const AccordionView = ({children,selectedDate})=>{ 
+
+
+  React.useEffect(() => {
+    console.log('cew selectedDate? ',selectedDate)
+
+  },[selectedDate ]);
+
+  return (<Accordion>
         <AccordionSummary
           expandIcon={<ExpandMoreIcon />}
           aria-controls="panel1a-content"
           id="panel1a-header"
         >
-          <Typography>View Availability</Typography>
+          <Typography>View Availability {selectedDate}</Typography> 
         </AccordionSummary>
         <AccordionDetails>
         {children}
         </AccordionDetails>
-      </Accordion>
+      </Accordion>);
+
+}
 
  const AppScheduler = ()=><Scheduler
   view="month"
@@ -115,7 +129,7 @@ dialogMaxWidth="sm"
 
  console.log(Object.keys(scheduledItems),'massages=>',typeof scheduledItems,typeof scheduledItems[0]);
   return (
-    displayAs==='Accordion'?(<AccordionView><AppScheduler/></AccordionView>) :(<AppScheduler onClick={(event)=>console.log('schedulue cal event lick::', event)}/>)
+    displayAs==='Accordion'?(<AccordionView selectedDate={selectedDateTime}><AppScheduler/></AccordionView>) :(<AppScheduler onClick={(event)=>console.log('schedulue cal event lick::', event)}/>)
 
   );
 }

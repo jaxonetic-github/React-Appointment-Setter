@@ -1,5 +1,7 @@
 /** module constants */
 
+export const APP_NOTIFICATIONS = true;
+
 /** isAdmin state selector */
 export  const isAdminSelector = state => (state?.app?.app?.currentUser?.customData?.email==='kurawan@yahoo.com') 
 const schedule = [

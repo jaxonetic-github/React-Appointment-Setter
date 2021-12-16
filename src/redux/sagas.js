@@ -18,6 +18,8 @@ addScheduledItem,addScheduledItemSuccess,addScheduledItemError,fetchScheduledIte
 function* registerSaga(action) {
   const app = yield select(state=>state.app);
   const customData = yield call(app.registerWithEmail,action.payload );    
+  console.log('registersaga:', customData);
+
   yield put(loadProfile( customData));
 }
 

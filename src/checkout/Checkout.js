@@ -52,7 +52,7 @@ const theme = createTheme();
   const [agreementChecked, setAgreementChecked] =React.useState(false);
 
   const [paymentSucceeded, setPaymentSucceeded] = React.useState(false);
-  const [ScheduledItem,setScheduledItem] = React.useState();
+  const [scheduledItem,setScheduledItem] = React.useState();
 
   React.useEffect(() => {
  //console.log(`firstNameState = ${firstName}--,`,currentUser);
@@ -112,6 +112,7 @@ console.log(tmpRes);
                                             dispatch(creditPaymentSuccess())
                                           setPaymentSucceeded(true); 
                                         dispatch(insertReservation(tmpRes)); 
+                                        dispatch(addScheduledItem(scheduledItem))
                                          setActiveStep(activeStep + 1);
                                        }else{console.log("Credit Error::=>",successEvent.errors);
                                               dispatch(creditPaymenError('Payment Error',successEvent.toString()))}

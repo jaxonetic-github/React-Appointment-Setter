@@ -39,8 +39,8 @@ function AppointmentHome({bgColor}) {
   const theme = useTheme();
   const matches = useMediaQuery('(min-width:600px)');
   const navigate = useNavigate();
-  const [getCardData] = useState([{title:'View Availability Calendar', imageURL:'astroclock.jpeg'},{title:'Book Appointment',imageURL:'openCalendar.jpeg'}])
-  const url = 'coveredInFlowers.jpeg';
+  const [getCardData] = useState([{title:'View Availability Calendar', imageURL:'https://jaxonetic-github.github.io/React-Appointment-Setter/astroclock.jpeg'},{title:'Book Appointment',imageURL:'openCalendar.jpeg'}])
+  const url = 'https://jaxonetic-github.github.io/React-Appointment-Setter/coveredInFlowers.jpeg';
 
 
   return (
@@ -65,10 +65,12 @@ function AppointmentHome({bgColor}) {
      <Grid container spacing={0} >
   <Grid item={true} xs={8} md={4}  sx={{ margin: 'auto'}}>
     <Box>
-      <dl><h3>Local / In Studio</h3>
-      <dt>Therapeutic Massage </dt><dd>: $90/70min or $140/120min (includes 3 addons)</dd>
-      <dt>Reiki </dt><dd>: $40 for 30min</dd>
-      <dt>Cupping </dt> <dd>: $40 for 30min</dd>
+      <dl><h3>In Studio<sup>+$30 travel expense</sup></h3>
+      <dt><u>Therapeutic Massages </u></dt><dd>: $80/70min or $140/120min (+1 addons)</dd>
+      <dt>Bulk deal</dt><dd>: 5 * 70min massages for $400</dd>
+      <dt><u>Add-Ons</u> </dt><dd></dd>
+      <dt>Cupping </dt> <dd>: $10 for 20min</dd>
+      <dt>Reflexology </dt> <dd>: $10 for 10min</dd>
       </dl>
     </Box>
   </Grid>

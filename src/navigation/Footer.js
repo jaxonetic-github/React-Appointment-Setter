@@ -10,12 +10,14 @@ import Container from '@mui/material/Container';
 //import {Link as ReactLink} from "react-router-dom";
 //import { useNavigate} from "react-router-dom";
 
+import {COMPANY_NAME} from '../constants.js';
+
 function Copyright(props) {
   return (
     <Typography variant="body2" color="text.secondary" align="center" {...props}>
       {'Copyright © '}
       <Link color="inherit" href="https://mui.com/">
-        8ANGELS AKOK TRANSPORTATION, LLC
+       {COMPANY_NAME}
       </Link>{' '}
       {new Date().getFullYear()}
       {'.'}

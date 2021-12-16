@@ -52,7 +52,7 @@ if(profile) {console.log('Already logged in; so, forcing home redirect.');  navi
     const data = new FormData(event.currentTarget);
     // eslint-disable-next-line no-console
    
-    const submissionInfo = {email:data.get('email'), password:data.get('password'), firstName:data.get('firstName'), lastName:data.get('lastName')};
+    const submissionInfo = {email:data.get('email'), password:data.get('password'), firstname:data.get('firstName'), lastname:data.get('lastName')};
 
      dispatch(register(submissionInfo));          
           
