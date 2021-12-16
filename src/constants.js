@@ -123,15 +123,14 @@ const paragraph1Text = 'This Vehicle is exclusively for transportation to and fr
 export const HOME_PAGE_DEFAULT = {title, subtitle, reservationButton,paragraphs: [paragraph0Text, paragraph1Text]};
 
 export const CONTACTINFO =  {
-    title: 'More Info',
+    title: 'Contact Me',
 
     price: '15',
     description: [
-      'Driver:            Alora Cohen',
+      'Caregiver:            Alora Cohen',
       'Phone :           520-000-0000',
-      'Email :      aloracohen@yahoo.com',
-      'Or click below  to get started',     ],
-      imageURL: 'https://instagram.fphx1-2.fna.fbcdn.net/v/t51.2885-19/s150x150/226645404_514622019831148_3353726531057499936_n.jpg?_nc_ht=instagram.fphx1-2.fna.fbcdn.net&_nc_cat=104&_nc_ohc=yVVkUhT2_eMAX9dolJi&edm=AEoLEWgBAAAA&ccb=7-4&oh=49c70ded0c052c15e09d7c578f40ab5e&oe=61BD9718&_nc_sid=eabaf6',
+      'Email :      aloracohen@yahoo.com', ],
+      imageURL: 'https://jaxonetic-github.github.io/React-Appointment-Setter/face_small.jpeg',
     buttonText: 'Get started',
     buttonVariant: 'contained',
   };

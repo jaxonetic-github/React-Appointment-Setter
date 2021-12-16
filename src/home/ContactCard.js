@@ -19,7 +19,7 @@ import Container from '@mui/material/Container';
 //import {Link as ReactLink} from "react-router-dom";
 import { useNavigate} from "react-router-dom";
 
-import {  isAdminSelector} from '../constants';
+import {  isAdminSelector,CONTACTINFO} from '../constants';
 
 const selectContactData = state => state?.siteData?.contactData;
 
@@ -29,7 +29,7 @@ const selectContactData = state => state?.siteData?.contactData;
 function ContactCard(props) {
   const navigate = useNavigate();
     const app = null;
-    const componentData = useSelector(selectContactData);
+    const componentData =CONTACTINFO;
 const [displayData, setDisplayData] = useState(componentData);
    const [edit, setEditMode] = useState(false);
   const [editable] = useState(isAdminSelector);
@@ -65,18 +65,10 @@ const [displayData, setDisplayData] = useState(componentData);
 
   return (
     <React.Fragment>
-      <GlobalStyles styles={{ ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
-      <CssBaseline />
 
-{AdminDrawerMenu(toggleDrawer,handleSave, drawerState,editable,setEditMode, edit)}
-
-      <Container sx={{marginTop:10}} maxWidth="md" component="main">
-        <Grid container spacing={2} alignItems="flex-end">
-        
-            <Grid item key={componentData?.title} xs={12} sm={12} md={12}>
-              <Card><img src={componentData?.imageURL}  className="driver1-image" alt="logo" />
+              <Card sx={{margin:'auto',minWidth: 270,width:1/3}}>
                 <CardHeader
-                  title={componentData?.title+'hjbghjgj'}
+                  title={componentData?.title}
                   subheader={componentData?.subheader}
                   titleTypographyProps={{ align: 'center' }}
                   action={componentData?.title === 'Pro' ? <StarIcon /> : null}
@@ -101,31 +93,14 @@ const [displayData, setDisplayData] = useState(componentData);
                         key={descriptionIndex+line}
                       >
                   {line}
-                   {edit &&    <Input   id="makeReservation"
-                  label="Make Reservation"
-                  onBlur={(event)=>{
-                    const clone = JSON.parse(JSON.stringify(displayData));
-                    clone.description[descriptionIndex]=event.target.value;
-                    console.log( event.target, 'cloning and resetting', clone);
-                  setDisplayData(clone);
-                    
-
-                }}
-                  name="makeReservation"
-                  defaultValue={componentData.description[descriptionIndex]}
-               
-                />}
+                  
                       </Typography>
                     ))}
                   </ul>
-                 {  <Button variant='outlined' fullWidth size="large" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'reserve now '}<AirportShuttleIcon/></Button>}
                 </CardContent>
         
               </Card>
-            </Grid>
-          
-        </Grid>
-      </Container>
+   
      
     </React.Fragment>
   );

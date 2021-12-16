@@ -8,7 +8,7 @@ import Input from '@mui/material/Input';
 import FullScreenAgendaDialog from '../calendars/fullScreenAgendaDialog.js'
 import  Divider  from '@mui/material/Divider';
 import  Box  from '@mui/material/Box';
-
+import ContactCard from './ContactCard';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
@@ -87,13 +87,13 @@ function AppointmentHome({bgColor}) {
 </Grid>
    </CardContent >
   </Card>
-   <Box sx={{ margin:'auto', justifyContent: 'space-around' , width:300}}>
+   <Box sx={{ margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:350}}>
      <Button variant='outlined'  size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
      <Button variant='outlined'  size="small" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
     </Box>
 
 </Container>
-    
+    <ContactCard/>
     </React.Fragment>
   );
 }
