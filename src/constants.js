@@ -90,7 +90,7 @@ export const INITIAL_STATE_EMPTY={
   profile:null,
   siteData:null,
   settings:{notifyAfterReservation:false},
-  error:'Initial Empty State'
+  error:''
 };
 
 
