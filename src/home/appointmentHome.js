@@ -26,6 +26,8 @@ import { useNavigate} from "react-router-dom";
 import AdminDrawerMenu from './AdminMenu';
 import {  isAdminSelector} from '../constants';
 
+import { useTheme } from '@mui/material/styles';
+import useMediaQuery from '@mui/material/useMediaQuery';
 
 //const selectCardsData = state => state?.siteData?.cardData;
 
@@ -34,40 +36,62 @@ import {  isAdminSelector} from '../constants';
  *      a special "admin" menu is available allowing the user to change text
  */
 function AppointmentHome({bgColor}) {
+  const theme = useTheme();
+  const matches = useMediaQuery('(min-width:600px)');
   const navigate = useNavigate();
   const [getCardData] = useState([{title:'View Availability Calendar', imageURL:'astroclock.jpeg'},{title:'Book Appointment',imageURL:'openCalendar.jpeg'}])
-const url = 'coveredInFlowers.jpeg';
+  const url = 'coveredInFlowers.jpeg';
 
 
   return (
     <React.Fragment>
-      <GlobalStyles styles={{backgroundColor: bgColor, ul: { margin: 0, padding: 0, listStyle: 'none' } }} />
-      <CssBaseline />
 
-<Container sx={{margin:5, backgroundColor: bgColor}}>
-    <Grid container spacing={2}>
-  <Grid item xs={8} md={6}>
-     <Card><CardMedia component="img" alt="banner" image={url} /></Card>
+<Container sx={{margin: 0, padding: 0, }}>
+    <Grid container spacing={2} sx={{alignItems: 'center'}} >
+  <Grid item={true} xs={12} md={5}  >
+     <Card  sx={{ margin: 'auto' ,maxWidth:600}}><CardMedia component="img" alt="banner" image={url} /></Card>
   </Grid>
-  <Grid item xs={8} md={4}>
-  <Card><CardHeader title={'Massage & Reiki Therapy'}  titleTypographyProps={{ align: 'center' }}     >Massage Therapy</CardHeader>
+  <Grid  item={true}  xs={12} md={6} sx={{alignItems: 'center'}}>
+  <Card sx={{ margin: 'auto',maxWidth:600}}><CardHeader title={'Massage & Reiki Therapy'}  titleTypographyProps={{ align: 'center' }}     >Massage Therapy</CardHeader>
   <CardContent> Massage, cupping and reiki</CardContent>
   <CardContent>Welcome to your portal for private alternative care.  I specialize in working
   with athletes and healthcare workers or those who have higly stressful professions.</CardContent>
-  
-
   </Card>
-   <Box>
-     <Button variant='outlined' fullWidth size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
-
-     <Button variant='outlined' fullWidth size="small" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
-
-      </Box>
   </Grid>
+</Grid>
+
+ <Card ><CardHeader title={'Pricing'}  titleTypographyProps={{ align: 'center' }}></CardHeader>
+  <CardContent sx={{maxWidth:'80'}}> 
+     <Grid container spacing={0} >
+  <Grid item={true} xs={8} md={4}  sx={{ margin: 'auto'}}>
+    <Box>
+      <dl><h3>Local / In Studio</h3>
+      <dt>Therapeutic Massage </dt><dd>: $90/70min or $140/120min (includes 3 addons)</dd>
+      <dt>Reiki </dt><dd>: $40 for 30min</dd>
+      <dt>Cupping </dt> <dd>: $40 for 30min</dd>
+      </dl>
+    </Box>
+  </Grid>
+  <Grid  item={true}  xs={8} md={4} sx={{ margin: 'auto'}}>
+    <Box > 
+      <dl><h3>Rituals & Meditations</h3>
+      <dt>Guided Meditations</dt><dd>: $90/70min or $140/120min </dd>
+      <dt>Elemental Meditations (ex. Tattwa Shudhi) </dt><dd>: $40 for 30min</dd>
+      <dt>Rituals </dt> <dd>: $500 </dd>
+      </dl>
+    </Box>
+    </Grid>
 
 </Grid>
+   </CardContent >
+  </Card>
+   <Box sx={{ margin:'auto', justifyContent: 'space-around' , width:300}}>
+     <Button variant='outlined'  size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
+     <Button variant='outlined'  size="small" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
+    </Box>
+
 </Container>
-     
+    
     </React.Fragment>
   );
 }

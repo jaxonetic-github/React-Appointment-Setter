@@ -48,7 +48,7 @@ import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 const trigger = useScrollTrigger();
 const navigate = useNavigate();
 
-  return(<Box>
+  return(<Container>
 
 <Slide appear={false} direction="down" in={!trigger}>
 
@@ -61,7 +61,7 @@ const navigate = useNavigate();
 
  <Box>
     <Footer/>
-    </Box>  </Box>
+    </Box>  </Container>
   );
 }
 export default MainComponent;

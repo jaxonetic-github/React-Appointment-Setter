@@ -164,7 +164,7 @@ export const TIERS = [
 export const COMPANY_NAME = 'Alchemeia';
 export const HOME_BANNER_URL = 'https://instagram.fphx1-2.fna.fbcdn.net/v/t51.2885-15/e35/211493852_1515322732138516_6545539816536996866_n.jpg?_nc_ht=instagram.fphx1-2.fna.fbcdn.net&_nc_cat=104&_nc_ohc=naMzpoWL_vcAX_Qd7eT&edm=APU89FABAAAA&ccb=7-4&oh=d85cf58ed87659d2c7cf801501da532f&oe=61BD9AF4&_nc_sid=86f79a';
 export const APPBAR_INITIAL_HEIGHT = 64;
-export const APPBAR_INITIAL_COLOR = 'transparent';
+export const APPBAR_INITIAL_COLOR = 'white';
 
 /*********************  fee structue used by Review screen to display to user  ******/
 export const FEE_FORMULA = [

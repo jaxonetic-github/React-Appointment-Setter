@@ -61,7 +61,7 @@ function Reservations({bgColor}) {
           <TableRow>
             <TableCell aria-label='createdColumn'>Created On</TableCell>
             <TableCell>Contact</TableCell>
-            <TableCell>PickUp & Drop Off</TableCell>
+            <TableCell>Location</TableCell>
             </TableRow>
         </TableHead>
         <TableBody>
@@ -70,7 +70,7 @@ function Reservations({bgColor}) {
               <TableCell>{new Date(reservation?.createdDate?.toString()).toLocaleString()}</TableCell>
               <TableCell><span aria-label='wholename'>{reservation?.firstName}{' '}{reservation?.lastName}</span>
               <Divider/><span aria-label='email'>{reservation?.email}</span><p aria-label='phone'>{reservation?.phone}</p></TableCell>
-              <TableCell><span aria-label='pickupLocation'>{reservation?.pickupLocation}</span><p >{new Date( reservation?.pickUpDate).toLocaleString()}</p><span aria-label='dropOffLocation'>{reservation?.dropOffLocation}</span><p>{new Date(reservation?.dropOffDate).toLocaleString()}</p></TableCell>
+              <TableCell><span aria-label='pickupLocation'>{reservation?.pickupLocation}</span><p >{new Date( reservation?.pickUpDate).toLocaleString()}</p></TableCell>
             </TableRow>)
           )}
           <TableRow >

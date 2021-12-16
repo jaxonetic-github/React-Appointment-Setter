@@ -1,22 +1,22 @@
 {
   "files": {
-    "main.css": "/React-Appointment-Setter/static/css/main.80f04ff2.chunk.css",
-    "main.js": "/React-Appointment-Setter/static/js/main.81bac6d9.chunk.js",
-    "main.js.map": "/React-Appointment-Setter/static/js/main.81bac6d9.chunk.js.map",
+    "main.css": "/React-Appointment-Setter/static/css/main.b99b836d.chunk.css",
+    "main.js": "/React-Appointment-Setter/static/js/main.77e16677.chunk.js",
+    "main.js.map": "/React-Appointment-Setter/static/js/main.77e16677.chunk.js.map",
     "runtime-main.js": "/React-Appointment-Setter/static/js/runtime-main.ac5572ad.js",
     "runtime-main.js.map": "/React-Appointment-Setter/static/js/runtime-main.ac5572ad.js.map",
-    "static/js/2.ee8b82a7.chunk.js": "/React-Appointment-Setter/static/js/2.ee8b82a7.chunk.js",
-    "static/js/2.ee8b82a7.chunk.js.map": "/React-Appointment-Setter/static/js/2.ee8b82a7.chunk.js.map",
+    "static/js/2.3ccaa7ed.chunk.js": "/React-Appointment-Setter/static/js/2.3ccaa7ed.chunk.js",
+    "static/js/2.3ccaa7ed.chunk.js.map": "/React-Appointment-Setter/static/js/2.3ccaa7ed.chunk.js.map",
     "static/js/3.195c8fe0.chunk.js": "/React-Appointment-Setter/static/js/3.195c8fe0.chunk.js",
     "static/js/3.195c8fe0.chunk.js.map": "/React-Appointment-Setter/static/js/3.195c8fe0.chunk.js.map",
     "index.html": "/React-Appointment-Setter/index.html",
-    "static/css/main.80f04ff2.chunk.css.map": "/React-Appointment-Setter/static/css/main.80f04ff2.chunk.css.map",
-    "static/js/2.ee8b82a7.chunk.js.LICENSE.txt": "/React-Appointment-Setter/static/js/2.ee8b82a7.chunk.js.LICENSE.txt"
+    "static/css/main.b99b836d.chunk.css.map": "/React-Appointment-Setter/static/css/main.b99b836d.chunk.css.map",
+    "static/js/2.3ccaa7ed.chunk.js.LICENSE.txt": "/React-Appointment-Setter/static/js/2.3ccaa7ed.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
     "static/js/runtime-main.ac5572ad.js",
-    "static/js/2.ee8b82a7.chunk.js",
-    "static/css/main.80f04ff2.chunk.css",
-    "static/js/main.81bac6d9.chunk.js"
+    "static/js/2.3ccaa7ed.chunk.js",
+    "static/css/main.b99b836d.chunk.css",
+    "static/js/main.77e16677.chunk.js"
   ]
 }
