@@ -1,22 +1,22 @@
 {
   "files": {
     "main.css": "/React-Appointment-Setter/static/css/main.b99b836d.chunk.css",
-    "main.js": "/React-Appointment-Setter/static/js/main.dcd34c3f.chunk.js",
-    "main.js.map": "/React-Appointment-Setter/static/js/main.dcd34c3f.chunk.js.map",
-    "runtime-main.js": "/React-Appointment-Setter/static/js/runtime-main.ac5572ad.js",
-    "runtime-main.js.map": "/React-Appointment-Setter/static/js/runtime-main.ac5572ad.js.map",
-    "static/js/2.9c3a74fa.chunk.js": "/React-Appointment-Setter/static/js/2.9c3a74fa.chunk.js",
-    "static/js/2.9c3a74fa.chunk.js.map": "/React-Appointment-Setter/static/js/2.9c3a74fa.chunk.js.map",
-    "static/js/3.195c8fe0.chunk.js": "/React-Appointment-Setter/static/js/3.195c8fe0.chunk.js",
-    "static/js/3.195c8fe0.chunk.js.map": "/React-Appointment-Setter/static/js/3.195c8fe0.chunk.js.map",
+    "main.js": "/React-Appointment-Setter/static/js/main.d2afc1f1.chunk.js",
+    "main.js.map": "/React-Appointment-Setter/static/js/main.d2afc1f1.chunk.js.map",
+    "runtime-main.js": "/React-Appointment-Setter/static/js/runtime-main.10bf30d4.js",
+    "runtime-main.js.map": "/React-Appointment-Setter/static/js/runtime-main.10bf30d4.js.map",
+    "static/js/2.8f84153d.chunk.js": "/React-Appointment-Setter/static/js/2.8f84153d.chunk.js",
+    "static/js/2.8f84153d.chunk.js.map": "/React-Appointment-Setter/static/js/2.8f84153d.chunk.js.map",
+    "static/js/3.9baacce4.chunk.js": "/React-Appointment-Setter/static/js/3.9baacce4.chunk.js",
+    "static/js/3.9baacce4.chunk.js.map": "/React-Appointment-Setter/static/js/3.9baacce4.chunk.js.map",
     "index.html": "/React-Appointment-Setter/index.html",
     "static/css/main.b99b836d.chunk.css.map": "/React-Appointment-Setter/static/css/main.b99b836d.chunk.css.map",
-    "static/js/2.9c3a74fa.chunk.js.LICENSE.txt": "/React-Appointment-Setter/static/js/2.9c3a74fa.chunk.js.LICENSE.txt"
+    "static/js/2.8f84153d.chunk.js.LICENSE.txt": "/React-Appointment-Setter/static/js/2.8f84153d.chunk.js.LICENSE.txt"
   },
   "entrypoints": [
-    "static/js/runtime-main.ac5572ad.js",
-    "static/js/2.9c3a74fa.chunk.js",
+    "static/js/runtime-main.10bf30d4.js",
+    "static/js/2.8f84153d.chunk.js",
     "static/css/main.b99b836d.chunk.css",
-    "static/js/main.dcd34c3f.chunk.js"
+    "static/js/main.d2afc1f1.chunk.js"
   ]
 }

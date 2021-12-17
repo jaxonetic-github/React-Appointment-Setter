@@ -33,7 +33,7 @@ const theme = createTheme();
 //  const hasProfile = useSelector((state)=>state?.profile);
   const dispatch = useDispatch();
   const navigate = useNavigate();
-
+  const [whenToPay, setWhenToPay] = React.useState('later');
   const [firstName, setFirstName] = React.useState(currentUser?.firstname||'');
   const [lastName, setLastName] = React.useState(currentUser?.lastname||'');
   const [email, setEmail] = React.useState(currentUser?.email||'');
@@ -79,14 +79,14 @@ const theme = createTheme();
          else 
           if(currentStep===2) {
             //if we made it this far everything has been validated
-            validated = paymentSucceeded;
+            validated = (whenToPay=='later') || (whenToPay=='now'&& paymentSucceeded);
           }
 
       return validated;
 }
 
-function getStepContent(step) {
-  const tmpRes = {
+const buildAppointment =()=>{
+    return {
                     userid:'realmApp?.currentUser?.id',
                    pickUpDate:pickUpDate,
                     dropOffDate:dropOffDate,
@@ -94,11 +94,16 @@ function getStepContent(step) {
                    pickupLocation:pickupLocation,
                    firstName:firstName,
                     lastName:lastName,
+                    paid:paymentSucceeded,
                       email:email,
                       createdDate:new Date(),
-                      phone:phone}; 
+                      phone:phone};
+                    }
 
-console.log(tmpRes);
+function getStepContent(step) {
+  
+
+const tmpRes = buildAppointment();
   switch (step) {
     case 0:
     console.log("checkout.getStepContent before ItineraryFragment-->",firstName,lastName,email,phone);
@@ -106,18 +111,22 @@ console.log(tmpRes);
     case 1:
       return <AgreementForm onChange={onChange} />;
     case 2:
-      return <ReviewFragment handleSuccess={(successEvent)=> 
+      return <ReviewFragment  onChange={(event)=>onChange(event)} handleSuccess={(successEvent)=> 
                                         {
+                                          console.log('react-square-web-payments-sdk--',successEvent);
                                           if(successEvent.status==='OK'){
-                                            dispatch(creditPaymentSuccess())
-                                          setPaymentSucceeded(true); 
-                                        dispatch(insertReservation(tmpRes)); 
-                                        dispatch(addScheduledItem(scheduledItem))
-                                         setActiveStep(activeStep + 1);
-                                       }else{console.log("Credit Error::=>",successEvent.errors);
+                                            dispatch(creditPaymentSuccess());
+                                            setPaymentSucceeded(true); 
+                                          
+                                          dispatch(insertReservation(tmpRes)); 
+                                          dispatch(addScheduledItem(scheduledItem))
+                                           setActiveStep(activeStep + 1);
+                                         }
+                                        else{console.log("Credit Error::=>",successEvent.errors);
                                               dispatch(creditPaymenError('Payment Error',successEvent.toString()))}
                                       }}
                       reservation={tmpRes}
+                      whenToPay = {whenToPay}
             />;
     default:
       throw new Error('Unknown step');
@@ -138,7 +147,7 @@ console.log(tmpRes);
   case 'email':setEmail(event.target.value);break;
   case 'password':setPassword(event.target.value);break;
   case 'phone':setPhone(event.target.value);break;
-
+  case 'controlled-radio-buttons-group' : setWhenToPay(event.target.value); break;
   case 'firstName':setFirstName(event.target.value);break;
   case 'lastName':setLastName(event.target.value);break;
   case 'pickupdate':setPickUpDate(event.target.value);break;
@@ -169,7 +178,9 @@ console.log(tmpRes);
           let canContinue = false;
     if(activeStep === steps.length - 1){
         //  const data = new FormData(event.currentTarget);
-       
+        dispatch(insertReservation(buildAppointment())); 
+        dispatch(addScheduledItem(scheduledItem))
+        setActiveStep(activeStep + 1);
     }
     else if (activeStep === 0){
         //if(fullyValidated){
