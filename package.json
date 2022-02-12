@@ -2,7 +2,17 @@
   "name": "React-Appointment-Setter",
   "version": "0.1.0",
   "private": true,
-  "homepage":"/React-Appointment-Setter",
+  "scripts": {
+    "build": "react-scripts build",
+    "dev-build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
+    "start-express-server_standalone": " node express-static-serve/server/server.js",
+    "start-react_standalone": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
+    "start-express-dev": "export SET NODE_OPTIONS=--openssl-legacy-provider && npm run dev-build && (cd express-static-serve/server && npm run start)",
+    "start-express-prod": "npm run build && (cd express-static-serve/server && npm run start)",
+    "test": "jest test --coverage  --detectOpenHandles",
+    "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006 -s public",
+    "build-storybook": "build-storybook -s public"
+  },
   "dependencies": {
     "@aldabil/react-scheduler": "^2.0.0",
     "@apollo/client": "^3.4.16",
@@ -19,13 +29,16 @@
     "@mui/styles": "^5.0.2",
     "@reduxjs/toolkit": "^1.6.2",
     "aws4": "^1.11.0",
+    "axios": "^0.24.0",
     "babel-cli": "^6.26.0",
+    "cors": "^2.8.5",
     "emailjs-com": "^3.2.0",
     "graphql": "^16.0.1",
     "history": "^5.1.0",
     "install": "^0.13.0",
     "kerberos": "^1.1.7",
     "moment": "^2.29.1",
+    "qs": "^6.10.2",
     "react": "^17.0.2",
     "react-agenda": "^0.0.8",
     "react-alice-carousel": "^2.5.1",
@@ -44,17 +57,9 @@
     "snappy": "^7.0.3",
     "styled-components": "^5.3.3",
     "typescript": "^4.4.4",
+    "universal-cookie": "^4.0.4",
     "validator": "^13.6.0",
     "web-vitals": "^1.0.1"
-  },
-  "scripts": {
-    "start": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts start",
-    "build": "react-scripts build",
-    "dev-build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
-    "test": "jest test --coverage  --detectOpenHandles",
-    "eject": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts eject",
-    "storybook": "export SET NODE_OPTIONS=--openssl-legacy-provider && start-storybook -p 6006 -s public",
-    "build-storybook": "build-storybook -s public"
   },
   "eslintConfig": {
     "extends": [
