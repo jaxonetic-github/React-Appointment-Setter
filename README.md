@@ -30,11 +30,11 @@ This will run test cases with code coverage
 ## Demos
 
 
-### Github.io 
+#### Github.io 
 
 Hosted with Github pages: [https://jaxonetic-github.github.io/React-Appointment-Setter/](https://jaxonetic-github.github.io/React-Appointment-Setter/)
 
-### Docker
+#### Docker
 
 `docker pull jaxonetic/alchemeia`
 
