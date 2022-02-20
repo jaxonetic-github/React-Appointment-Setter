@@ -54,7 +54,7 @@ export default function FullScreenAgendaDialog({displayAs, onConfirm}) {
         }
     const finalEvent =  {target:{name:'appointmentDateTime',value:stampedEvent } };
    
-       console.log(stampedEvent,'****************',typeof stampedEvent.start.toUTCString())
+      // console.log(stampedEvent,'****************',typeof stampedEvent.start.toUTCString())
     setSelectedDateTime(stampedEvent.start.toUTCString());
        if(onConfirm)
         onConfirm(finalEvent);
@@ -81,10 +81,10 @@ export default function FullScreenAgendaDialog({displayAs, onConfirm}) {
 const AccordionView = ({children,selectedDate})=>{ 
 
 
-  React.useEffect(() => {
+/*  React.useEffect(() => {
     console.log('cew selectedDate? ',selectedDate)
 
-  },[selectedDate ]);
+  },[selectedDate ]);*/
 
   return (<Accordion>
         <AccordionSummary
@@ -124,10 +124,15 @@ step: 60
  }}
 dialogMaxWidth="sm"
   onConfirm={handleConfirm}
-  events={scheduledItems?.map((item)=>item)}
+  events={scheduledItems?.map((item)=>{ 
+    const retObj = {...item}
+    retObj.start= new Date(item.start);
+    retObj.end=new Date(item.end);
+    return retObj;
+  })}
 />     
 
- console.log(Object.keys(scheduledItems),'massages=>',typeof scheduledItems,typeof scheduledItems[0]);
+ console.log(scheduledItems,'massages=>',typeof scheduledItems);
   return (
     displayAs==='Accordion'?(<AccordionView selectedDate={selectedDateTime}><AppScheduler/></AccordionView>) :(<AppScheduler onClick={(event)=>console.log('schedulue cal event lick::', event)}/>)
 

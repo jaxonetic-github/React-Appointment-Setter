@@ -95,7 +95,7 @@ function ReviewFragment({reservation, handleSuccess, onChange, whenToPay}) {
           />
         </Grid>
 
-   <SquarePaymentForm data-testid="SquarePay" handleSuccess={handleSuccess}/>
+   <SquarePaymentForm aria-label="SquarePay" data-testid="SquarePay" handleSuccess={handleSuccess}/>
   
     </Box>
 

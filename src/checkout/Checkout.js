@@ -70,7 +70,7 @@ const theme = createTheme();
          const firstNameValidated = firstName && !validator.isEmpty(firstName) ;
          const lastNameValidated =  lastName && !validator.isEmpty(lastName);
            validated = (phoneValidated && emailValidated && pickupLocationValidated && dropOffLocationValidated && firstNameValidated && lastNameValidated);
-          console.log(`phone=${phone}, email(${email}),  pickupDate(${pickUpDate}),pickupLocation(${pickupLocation}),dropOffLocationValidated, firstNameValidated(${firstNameValidated}), firstName(${firstName}), lastNameValidated(${lastNameValidated}/ ${lastName})`);
+       //   console.log(`phone=${phone}, email(${email}),  pickupDate(${pickUpDate}),pickupLocation(${pickupLocation}),dropOffLocationValidated, firstNameValidated(${firstNameValidated}), firstName(${firstName}), lastNameValidated(${lastNameValidated}/ ${lastName})`);
       }else
          if(currentStep===1){
           const agreementSignatureValidated = !validator.isEmpty(agreementSignature);
@@ -106,7 +106,7 @@ function getStepContent(step) {
 const tmpRes = buildAppointment();
   switch (step) {
     case 0:
-    console.log("checkout.getStepContent before ItineraryFragment-->",firstName,lastName,email,phone);
+   // console.log("checkout.getStepContent before ItineraryFragment-->",firstName,lastName,email,phone);
       return <SetAppointmentFragment  onChange={(event)=>onChange(event)}/>;
     case 1:
       return <AgreementForm onChange={onChange} />;
@@ -135,8 +135,8 @@ const tmpRes = buildAppointment();
 
 
  const onChange = (event) =>{
-  console.log(event)
-    console.log(event.target.name,'---',event.target.value);
+  //console.log(event)
+  //  console.log(event.target.name,'---',event.target.value);
      
     switch (event.target.name) {
   case 'appointmentDateTime':setScheduledItem(event.target.value);

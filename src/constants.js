@@ -31,7 +31,7 @@ export const RESERVATION = {
   createdDated:'2011:11:12',
   phone:"555-555-5555"};
 
-const app={
+export const DEMO_REALMAPP={
   currentUser:{ 
       customData:{firstname:'first',
             email:'first@test.com',
@@ -45,12 +45,12 @@ const app={
   }
 }
 
-const appDAO={
+export const DEMO_BACKEND_MGR={
       
       refreshCustomData:(()=>({firstName:'first', email:'first@test.com', lastName:'test'  })),
       logIn:(()=>true),
       logOut:(()=>true),
-      app:app,
+      app:DEMO_REALMAPP,
       loginAnonymously:(()=>true),
       getSiteData:(()=>({pageData:HOME_PAGE_DEFAULT, cardData:TIERS, contactData:CONTACTINFO,screen:''})),
       getReservations:(()=>[{...RESERVATION}]),
@@ -67,7 +67,7 @@ export const INITIAL_STATE={
   auth:{loginState :{isLoggedIn:false, isLoggingIn:false},
             backEnd:{}
        },
-       app:{...appDAO},
+       app:{...DEMO_BACKEND_MGR},
   availability:schedule,
   reservations:[RESERVATION],
   profile:{ firstname:"A", lastname:"Z",  email:"az@email.com"},
@@ -199,7 +199,7 @@ export function handleAuthenticationError(err) {
   let returnMsg=null;
   const { status, message } = parseAuthenticationError(err);
   const errorType = message || status;
-  console.log(err,'   ===',message,'---', status);
+ // console.log(err,'   ===',message,'---', status);
   switch (errorType) {
     case "invalid username":
        returnMsg = "Invalid email address." ;

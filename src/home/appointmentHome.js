@@ -28,6 +28,9 @@ import {  isAdminSelector} from '../constants';
 
 import { useTheme } from '@mui/material/styles';
 import useMediaQuery from '@mui/material/useMediaQuery';
+import axios from "axios";
+import log from 'loglevel';
+import qs from 'qs';
 
 //const selectCardsData = state => state?.siteData?.cardData;
 
@@ -89,7 +92,8 @@ function AppointmentHome({bgColor}) {
   </Card>
    <Box sx={{ margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:350}}>
      <Button variant='outlined'  size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
-     <Button variant='outlined'  size="small" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
+     <Button variant='outlined'  size="small" onClick={(evt)=>{  navigate('/checkout');}} 
+      sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
     </Box>
 
 </Container>

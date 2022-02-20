@@ -46,10 +46,15 @@ export const FETCH_SCHEDULED_ITEMS_ERROR = "FETCH_Scheduled_ITEMS_ERROR";
 export const CREDIT_PAYMENT_SUCCESS = 'CREDIT_PAYMENT_SUCCESS';
 export const CREDIT_PAYMENT_ERROR = 'CREDIT_PAYMENT_ERROR';
 export const LOGIN_ANONYMOUSLY = 'LOGIN_ANONYMOUSLY';
+export const LOAD_ANONYMOUS_DATA = 'LOAD_ANONYMOUS_DATA';
+export const LOAD_ANONYMOUS_DATA_SUCCESS = 'LOAD_ANONYMOUS_DATA_SUCCESS';
+export const RELOAD_FROM_TOKEN = 'RELOAD_FROM_TOKEN';
+export const RELOAD_FROM_TOKEN_SUCCESS = 'RELOAD_FROM_TOKEN_SUCCESS';
 
-
-
-
+export const reloadFromToken = createAction(RELOAD_FROM_TOKEN)
+export const reloadFromTokenSuccess = createAction(RELOAD_FROM_TOKEN_SUCCESS)
+export const loadAnonymousDataSuccess = createAction(LOAD_ANONYMOUS_DATA_SUCCESS)
+export const loadAnonymousData = createAction(LOAD_ANONYMOUS_DATA)
 export const fetchSiteData = createAction(FETCH_SITEDATA);
 export const fetchSiteDataError = createAction(FETCH_SITEDATA_ERROR);
 export const fetchSiteDataSuccess = createAction(FETCH_SITEDATA_SUCCESS);
@@ -256,12 +261,36 @@ export const creditPaymentSuccess = createAction(CREDIT_PAYMENT_SUCCESS);
 /**
  * @description Main/Initial App Redux Reducer
  *   @default
-
  * @returns The new state
  */
 export const appReducer = createReducer(INITIAL_STATE, (builder) => {
 
   builder
+    .addCase(reloadFromTokenSuccess, (state, action) => {
+      state.trace = action.type;
+      state.user = action.payload.user;
+      state.availability = action.payload.availability;
+      return state;
+    })
+  .addCase(reloadFromToken, (state, action) => {
+      state.trace = action.type;
+      state.availability.push(action.payload);
+      return state;
+    })
+    .addCase(loadAnonymousDataSuccess, (state, action) => {
+      state.trace = action.type;
+      state.availability = action.payload.availability;
+      state.profile = action.payload.profile;
+      state.siteData= action.payload.site;
+      state.reservations= action.payload.reservations;
+
+
+      return state;
+    })
+  .addCase(loadAnonymousData, (state, action) => {
+      state.trace = action.type;
+      return state;
+    })
   .addCase(addScheduledItemSuccess, (state, action) => {
       state.trace = action.type;
       state.availability.push(action.payload);
@@ -345,7 +374,7 @@ export const appReducer = createReducer(INITIAL_STATE, (builder) => {
        state.trace = action.type;
        state.authState = {status :'Logged In successfully'};
        state.user = action.payload.user;
-       state.profile = action.payload.profile;
+       state.profile = action.payload.customData;
        //state.reservation= action.payload.reservations;
       state.reservations= action.payload.reservations? action.payload.reservations:[];
 

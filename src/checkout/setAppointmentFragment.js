@@ -8,7 +8,7 @@ import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
 import {PickUpDateAriaLabel,PickUpLocationAriaLabel,DropOffDateAriaLabel,DropOffLocationAriaLabel,
 FirstNameAriaLabel,LastNameAriaLabel,EmailAriaLabel,PasswordAriaLabel,PhoneAriaLabel}  from '../constants'
-import LocationSelect from './locationSelect.js';
+//import LocationSelect from './locationSelect.js';
 import CreatableSelect from 'react-select/creatable';
 import {  OnChangeValue } from 'react-select';
 /**
@@ -32,7 +32,7 @@ const locations = [{label:'Alchemeia Center', value:'262 E Pastime rd, Tucson Az
         Appointment Location
       </Typography>
         <h6>{selectedLocation}</h6>
-        <CreatableSelect name='locationSelect' isClearable onChange={(event)=>{ const newArg={target:{name:'locationSelect', value:event.value} }; setSelectedLocation(event.value) ; onChange(newArg);}} options={locations}/>
+        <CreatableSelect name='locationSelect' isClearable  aria-label={PickUpLocationAriaLabel['aria-label']} onChange={(event)=>{ const newArg={target:{name:'locationSelect', value:event.value} }; setSelectedLocation(event.value) ; onChange(newArg);}} options={locations}/>
       
       <Typography variant="h6" sx={{marginBottom:3, marginTop:3}} >
         Contact Info

@@ -42,6 +42,7 @@ function Profile({bgColor}) {
   const [error, setError] = React.useState('');
 
   React.useEffect(() => {
+    console.log('Profie:',loggedInUser)
     if(!loggedInUser) {console.log('User with no Profile logged in; so, forcing home redirect.'); navigate("/");}
   },[loggedInUser,navigate/*,firstName,lastName,email,phone*/]);
 
@@ -114,7 +115,7 @@ else{setError('Unable to continue, found invalid fields')}
                   id="lastName"
                   label="Last Name"
                   name="lastName"
-                  defaultValue={profile.lastname}
+                  defaultValue={profile?.lastname}
                   inputProps={LastNameAriaLabel}
                   placeholder='Last Name'
                   onChange={(event)=>{
@@ -130,7 +131,7 @@ else{setError('Unable to continue, found invalid fields')}
               </Grid>
               <Grid item xs={12}>
                 <TextField
-                  defaultValue={profile.email}
+                  defaultValue={profile?.email}
                   fullWidth
                   id="email"
                   label="Email Address"
@@ -150,7 +151,7 @@ else{setError('Unable to continue, found invalid fields')}
               </Grid>
               <Grid item xs={12}>
                 <TextField 
-                  defaultValue={profile.phone}
+                  defaultValue={profile?.phone}
                   fullWidth
                   name="phone"
                   label="phone"

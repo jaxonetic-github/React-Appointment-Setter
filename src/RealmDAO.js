@@ -1,18 +1,26 @@
 import * as Realm from "realm-web";
 import { handleAuthenticationError, parseAuthenticationError, APP_NOTIFICATIONS} from './constants';
     import emailjs, { init } from 'emailjs-com';
+import {DEMO_BACKEND_MGR} from './constants';
+import Cookies from 'universal-cookie';
 
 /**
  * @class
  * @description Using the Provider and the React.Context to store teh DB link.
  * 
- * @param demoAppId : The Realm Aplication ID
- * @param children : the nodes nested within component
+ * @param demoAppId : The Realm Aplication ID.  If not supplied than a Stub is returned.
  */
 export class RealmDAO  {
 
   constructor( demoAppId){
-this.app = new Realm.App(demoAppId);
+    if(demoAppId){
+        this.app = new Realm.App(demoAppId);
+        console.log('Live Backend');
+    }
+    else{
+        console.log('Stubbed Backend');
+        this.app = DEMO_BACKEND_MGR;
+    }
   
   }
 
@@ -74,12 +82,26 @@ return result;
    *  login with the provided Login Credentials.  After loggin in , set Profile and Reservations
    */
   loginAnonymously = async  ()=> {
+    try{
       const loginResult = await this.app?.logIn(Realm.Credentials.anonymous());
       console.log("loginAnonymously:",loginResult);
      // await this.getSiteData();
 
-      //this.logOut();
-      return loginResult;
+ const site =   await this.getSiteData();
+      const schedule = await this.getScheduleItems(); 
+      let reservations = null;
+      let profile = null; 
+
+      if(this.app.currentUser?.customData?.email){
+       reservations = await this.getReservations(); 
+
+       profile = this.app.currentUser.customData;
+      }
+//console.log({user: this.anonUser, site:this.site, schedule:this.schedule});
+      return {user: loginResult, site:site, schedule:schedule, reservations:reservations, profile:profile};
+    }catch(error){
+        return{error:error.message};
+    }
 }
 
   /**
@@ -92,12 +114,24 @@ console.log(credentials)
     //tell store that a login is being attempted
    //dispatch(login('Attempting to login'));
    const loginResult =  await this.app.logIn(Realm.Credentials.emailPassword(credentials.email, credentials.password));
-   return loginResult;
+const cookies = new Cookies();
+ //const token = cookies.set('alchemeia');
+ cookies.set('alchemeia', loginResult.accessToken, { path: '/', httpOnly:false, maxAge:60000*10 });
+ const site =   await this.getSiteData();
+      const schedule = await this.getScheduleItems(); 
+      let reservations = null;
+      let profile = null; 
+
+      if(this.app.currentUser?.customData?.email){
+       reservations = await this.getReservations(); 
+
+       profile = this.app.currentUser.customData;
+      }
+    return {user: loginResult, site:site, schedule:schedule, reservations:reservations, profile:profile};
     } catch(err)
     {
-      const msg = handleAuthenticationError(err);
-      console.log(msg,'--',err);
-     //  dispatch(loginError(msg));
+      return {error:handleAuthenticationError(err)};
+
     }
   }
  
@@ -108,6 +142,8 @@ console.log(credentials)
   logOut = async ()=> {
     // Log out the currently active user
     this.app?.currentUser?.logOut();
+        const cookies = new Cookies();
+ cookies.remove('alchemeia');
   }
 
 

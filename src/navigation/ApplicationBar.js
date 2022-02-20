@@ -40,12 +40,7 @@ const location = useLocation();
     setAnchorEl(null);
   };
 
-  React.useEffect(() => {
-    console.log('Applicatin Bar location change? ',location)
 
-  },[hasProfileSelector, navigate, location, ]);
-
-   
   return (
  
       <AppBar  sx={{  bgcolor: barColor, minHeight:0, height:barHeight, color:'black' }}>

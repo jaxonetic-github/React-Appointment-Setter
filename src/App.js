@@ -13,9 +13,14 @@ import {HOME_BANNER_URL, COMPANY_NAME} from './constants.js'
 import FullScreenAgendaDialog from './calendars/fullScreenAgendaDialog.js'
 
 
+
 /*const loginAnonymous = async () => {
     const user = await app.logIn(Realm.Credentials.anonymous());
-    console.log(user);
+
+     axios.get("/React-Appointment-Setter/getObject").then((response) => {
+     console.log( '/React-Appointment-Setter/getObject',response.data );
+    });
+    
   };*/
 
 
@@ -24,8 +29,9 @@ import FullScreenAgendaDialog from './calendars/fullScreenAgendaDialog.js'
  *      <Route path="*" element={<GeneralInfo />} />
  */
 function App() {
-console.log(process.env.REACT_APP_WEBPATH,',',process.env.PUBLIC_URL)
+
   const bgColor = 'transparent';// 'cadetblue';
+
   return (
     <Router>
     <Routes >

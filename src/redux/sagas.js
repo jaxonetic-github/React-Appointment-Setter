@@ -1,7 +1,8 @@
 import {  put,call, takeEvery, select } from 'redux-saga/effects'
+import log from 'loglevel';
 
 
-import {logout,loginError, login,loginSucceeded, register,
+import {loadAnonymousDataSuccess,reloadFromTokenSuccess,loadAnonymousData,bubbleError,logout,loginError, login,loginSucceeded, register,
 fetchSiteDataSuccess,fetchSiteData,fetchSiteDataError,loginAnonymously,
  refreshCustomData,fetchReservations,fetchReservationsError,fetchReservationsSuccess,
   loadProfile,insertReservation,editProfile,editProfileSuccess,editProfileError,
@@ -19,7 +20,9 @@ function* registerSaga(action) {
   const app = yield select(state=>state.app);
   const customData = yield call(app.registerWithEmail,action.payload );    
   console.log('registersaga:', customData);
-
+if(customData.error)
+    yield put (bubbleError(customData.error));
+else
   yield put(loadProfile( customData));
 }
 
@@ -29,7 +32,7 @@ function* registerSaga(action) {
  */
 function* signOutSaga(action) {
     const app = yield select(state=>state.app);
-    call(app.logOut ); 
+    yield call(app.logOut ); 
 }
 
 /**
@@ -40,7 +43,6 @@ function* signOutSaga(action) {
 function* getReservationsSaga(action) {
 
        const app = yield select(state=>state.app);
-console.log('state.app in getreservationssaga:', app);
    try {
       const reservationsResult = yield call(app.getReservations );
     yield put(fetchReservationsSuccess(reservationsResult) );
@@ -61,7 +63,9 @@ function* insertReservationSaga(action) {
        const app = yield select(state=>state.app);
 
    try {
-       yield call(app.insertReservations,action.payload );
+    console.log(action);
+     const insertResult =  yield call(app.insertReservations,action.payload );
+       log.warn('post call to insertReservations',insertResult);
     yield put(fetchReservations() );
     //  const user = yield call(Api.fetchUser, action.payload.userId);
       //yield put({type: "USER_FETCH_SUCCEEDED", user: user});
@@ -73,21 +77,39 @@ function* insertReservationSaga(action) {
 
 /**
  *  worker Saga: to be fired when unauthed user needs SiteData
- *
+ *  
  */
 function* loginAnonymouslySaga(action) {
      const app = yield select(state=>state.app);
 
+  const result = yield call(app.loginAnonymously );
 
-  const loginResult = yield call(app.loginAnonymously );
-console.log('anonymouse result in saga',loginResult);
-     
- const site = yield call(app.getSiteData);
-if(site.screen) {
-  yield put(fetchSiteDataSuccess(site))
- yield put(fetchScheduledItems())
-}
- yield call(app.logOut);
+/**
+ * The rest API returns result.data and prefills reservation, schedule, etc
+ * The Realm direct route just returns a valid anonymous user 
+ */
+
+  if(result.data){
+  const {user, site, schedule,reservations, error} = result.data;
+     if(user?.email ){
+        //need to migrate all success to this path
+        console.log('updated anonlogin path');
+       yield put(loadAnonymousDataSuccess({site:site,profile:user,availability:schedule, reservations:reservations}));
+
+     }
+     if(error){
+        yield put (bubbleError(error));
+     }}
+        else{
+            //deprecating this else path as soon as possible
+         const site = yield call(app.getSiteData);
+        
+        if(site.screen) {
+          yield put(fetchSiteDataSuccess(site))
+          yield put(fetchScheduledItems())
+        }
+        // yield call(app.logOut);
+    }
 
 }
 
@@ -100,18 +122,24 @@ function* loginSaga(action) {
 
 const email = action.payload.email;
 const password = action.payload.password;
+console.log('Preparing to login',{email,password} );
 const loginResult = yield call(app.login,{email,password} );
+console.log('app',loginResult);
 
-  if( loginResult)
+  if( loginResult.error)
   { 
-    yield put(loginSucceeded(loginResult));
-   yield put(fetchReservations());
-    yield put(refreshCustomData());
-     yield put(fetchScheduledItems())
+    log.warn('logn errer',loginResult.error)
+   yield put(loginError(loginResult.error));
 
   }
   else 
-   put(loginError(loginResult.error));
+   {
+     log.warn('loginResult no erroe',loginResult.error )
+     yield put(loginSucceeded(loginResult));
+   yield put(fetchReservations());
+ //   yield put(refreshCustomData());
+     yield put(fetchScheduledItems())
+   }
 
 }
 
@@ -130,11 +158,11 @@ const firstname = action.payload.firstname;
 const phone = action.payload.phone;
 console.log('---------->',email, lastname, firstname, phone);
 const {modifiedCount, profile} = yield call(app.editProfile,action.payload );
-
+console.log("profileeditresults=",modifiedCount, profile)
   if( modifiedCount>0)
   { 
     yield put(editProfileSuccess(profile));
-    yield put(refreshCustomData());
+    //yield put(refreshCustomData());
   }
   else 
    put(editProfileError('Profile was not modified'));
@@ -172,6 +200,7 @@ function* UnhandledSaga(action) {
  */ 
 function* fetchSiteDataSaga(action) {
      const app = yield select(state=>state.app);
+console.log('siteData saga', app)
 
    try {
        const siteData =   yield call(app.getSiteData);
@@ -219,12 +248,34 @@ console.log('ScheduleItem retrieved', scheduledItems)
 
 
 /**
+ *  getReservation Saga: will be fired on getReservation actions
+ *
+ */
+
+function* reloadFromTokenSaga(action) {
+
+       const app = yield select(state=>state.app);
+console.log('state.app in getreservationssaga:', app);
+   try {
+      const reloadResults = yield call(app.reloadFromToken, action.payload );
+    yield put(reloadFromTokenSuccess(reloadResults) );
+    //  const user = yield call(Api.fetchUser, action.payload.userId);
+      //yield put({type: "USER_FETCH_SUCCEEDED", user: user});
+   } catch (e) {
+      yield put(bubbleError( e.message));
+   }
+}
+
+
+/**
 
   Does not allow concurrent fetches of user. If "USER_FETCH_REQUESTED" gets
   dispatched while a fetch is already pending, that pending fetch is cancelled
   and only the latest one will be run.
 */
 function* appSaga(app) {
+    console.log('saga');
+ // yield takeEvery(reloadFromToken, reloadFromTokenSaga);
   yield takeEvery(loginAnonymously, loginAnonymouslySaga);
    yield takeEvery(addScheduledItem, addScheduledItemSaga);
    yield takeEvery(fetchScheduledItems, fetchScheduleItemsSaga);
