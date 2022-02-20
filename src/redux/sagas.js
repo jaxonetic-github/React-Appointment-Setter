@@ -2,11 +2,11 @@ import {  put,call, takeEvery, select } from 'redux-saga/effects'
 import log from 'loglevel';
 
 
-import {loadAnonymousDataSuccess,reloadFromTokenSuccess,loadAnonymousData,bubbleError,logout,loginError, login,loginSucceeded, register,
+import {loadAnonymousDataSuccess,/*reloadFromTokenSuccess,/*loadAnonymousData,*/ bubbleError,logout,loginError, login,loginSucceeded, register,
 fetchSiteDataSuccess,fetchSiteData,fetchSiteDataError,loginAnonymously,
  refreshCustomData,fetchReservations,fetchReservationsError,fetchReservationsSuccess,
   loadProfile,insertReservation,editProfile,editProfileSuccess,editProfileError,
-addScheduledItem,addScheduledItemSuccess,addScheduledItemError,fetchScheduledItems,fetchScheduledItemsSuccess,fetchScheduledItemsError,} from './reducers/appReducer';
+addScheduledItem,addScheduledItemSuccess,/*addScheduledItemError,*/fetchScheduledItems,fetchScheduledItemsSuccess,fetchScheduledItemsError,} from './reducers/appReducer';
 // worker Saga: will be fired on USER_FETCH_REQUESTED actions
 
 
@@ -251,7 +251,7 @@ console.log('ScheduleItem retrieved', scheduledItems)
  *  getReservation Saga: will be fired on getReservation actions
  *
  */
-
+/*
 function* reloadFromTokenSaga(action) {
 
        const app = yield select(state=>state.app);
@@ -265,7 +265,7 @@ console.log('state.app in getreservationssaga:', app);
       yield put(bubbleError( e.message));
    }
 }
-
+*/
 
 /**
 

@@ -7,7 +7,7 @@ import './css/App.css';
 import App from './App';
 import  WebServerClient  from "./webServerClient.js";
 import { RealmDAO } from "./RealmDAO.js";
-import { INITIAL_STATE,INITIAL_STATE_EMPTY } from "./constants.js";
+import { INITIAL_STATE_EMPTY } from "./constants.js";
 import reportWebVitals from './reportWebVitals';
 //import RealmApolloProvider from "./graphql/RealmApolloProvider";
 
@@ -15,7 +15,7 @@ import { createStore, applyMiddleware } from 'redux'
 import createSagaMiddleware from 'redux-saga'
 import { Provider } from 'react-redux'
 
-import {reloadFromToken, appReducer,fetchScheduledItems,refreshCustomData,fetchReservations,loginAnonymously,loadBackEnd,fetchSiteData} from './redux/reducers/appReducer'
+import {/*reloadFromToken,*/ appReducer,fetchScheduledItems,refreshCustomData,fetchReservations,loginAnonymously,loadBackEnd,fetchSiteData} from './redux/reducers/appReducer'
 import appSaga from './redux/sagas';
 import {logger} from 'redux-logger';
 import { createTheme, ThemeProvider } from '@mui/material/styles';

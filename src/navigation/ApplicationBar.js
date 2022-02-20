@@ -16,7 +16,7 @@ import Grid from '@mui/material/Grid';
 import Menu from '@mui/material/Menu';
 import {logout} from '../redux/reducers/appReducer'
 
-import { useNavigate,useLocation} from "react-router-dom";
+import { useNavigate} from "react-router-dom";
 
 const selectAuthedUserDataState = state => state?.profile;
 //const selectProfile = state=>state?.profile;
@@ -30,7 +30,7 @@ function ApplicationBar({companyTitle, barColor, barHeight}) {
   const hasProfileSelector = useSelector((state)=>state?.profile?.email);
   //const [authedUser, setAuthedUser] = useState(authedUserSelector?.email);
   const [anchorEl, setAnchorEl] = React.useState(null);
-const location = useLocation();
+//const location = useLocation();
 
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);

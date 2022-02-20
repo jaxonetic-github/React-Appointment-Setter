@@ -7,11 +7,11 @@ import ListItem from '@mui/material/ListItem';
 import ListItemText from '@mui/material/ListItemText';
 import Grid from '@mui/material/Grid';
 import Box from '@mui/material/Box';
-import Divider from '@mui/material/Divider';
+//import Divider from '@mui/material/Divider';
 import { FEE_FORMULA, NameOnCardAriaLabel } from '../constants';
 import TextField from '@mui/material/TextField';
 import SquarePaymentForm from './squarePayComponent.js';
-import Fade from '@mui/material/Fade';
+//import Fade from '@mui/material/Fade';
 
 import Radio from '@mui/material/Radio';
 import RadioGroup from '@mui/material/RadioGroup';

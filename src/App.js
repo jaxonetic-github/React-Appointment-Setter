@@ -1,7 +1,7 @@
 import React from "react";
 import MainComponent from "./home/MainComponent.js";
 import {HashRouter as Router, Routes, Route} from 'react-router-dom';
-import GeneralInfo from './home/GeneralInfo';
+//import GeneralInfo from './home/GeneralInfo';
 import Reservations from './checkout/Reservations';
 import Checkout from './checkout/Checkout';
 import Profile from './profile/Profile';

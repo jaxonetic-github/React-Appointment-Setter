@@ -1,56 +1,56 @@
-import  React , {useState} from 'react';
-import { useSelector } from 'react-redux'
+import  React /*, {useState}*/ from 'react';
+//import { useSelector } from 'react-redux'
 
 import Card from '@mui/material/Card';
+/*
 import Button from '@mui/material/Button';
 import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import Input from '@mui/material/Input';
-
 import AdminDrawerMenu from './AdminMenu';
-
+*/
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
-import CssBaseline from '@mui/material/CssBaseline';
-import Grid from '@mui/material/Grid';
+//import CssBaseline from '@mui/material/CssBaseline';
+//import Grid from '@mui/material/Grid';
 import StarIcon from '@mui/icons-material/StarBorder';
 import Typography from '@mui/material/Typography';
-import GlobalStyles from '@mui/material/GlobalStyles';
-import Container from '@mui/material/Container';
+//import GlobalStyles from '@mui/material/GlobalStyles';
+//import Container from '@mui/material/Container';
 //import {Link as ReactLink} from "react-router-dom";
-import { useNavigate} from "react-router-dom";
+//import { useNavigate} from "react-router-dom";
 
-import {  isAdminSelector,CONTACTINFO} from '../constants';
+import {  /*isAdminSelector,*/CONTACTINFO} from '../constants';
 
-const selectContactData = state => state?.siteData?.contactData;
+//const selectContactData = state => state?.siteData?.contactData;
 
 /**
  * @description  Display Contact Info
  */
 function ContactCard(props) {
-  const navigate = useNavigate();
-    const app = null;
+ // const navigate = useNavigate();
+ //   const app = null;
     const componentData =CONTACTINFO;
-const [displayData, setDisplayData] = useState(componentData);
-   const [edit, setEditMode] = useState(false);
-  const [editable] = useState(isAdminSelector);
- const [drawerState, setDrawerState] = React.useState(false);
+//const [displayData, setDisplayData] = useState(componentData);
+ //  const [edit, setEditMode] = useState(false);
+//  const [editable] = useState(isAdminSelector);
+ //const [drawerState, setDrawerState] = React.useState(false);
 
 
-
+/*
   const toggleDrawer = (event) => {
     if (event.type === 'keydown' && (event.key === 'Tab' || event.key === 'Shift')) {
       return;
     }
     setDrawerState(!drawerState);
   };
-
+*/
 //console.log(app,'----',editable,"editable",app?.profile?.email);
   //const displayData = props.cardData? props.cardData :app?.siteData?.cardData;
 //setDisplayData(app?.siteData?.cardData)
  //console.log(title,'  +==============++',app?.siteData?.pageData?.title);
  // });  
 
-
+/*
   const handleSave = async (event) => {
     // eslint-disable-next-line no-console
     
@@ -62,7 +62,7 @@ const [displayData, setDisplayData] = useState(componentData);
      console.log('CONTACT err',err);
   }
 }
-
+*/
   return (
     <React.Fragment>
 

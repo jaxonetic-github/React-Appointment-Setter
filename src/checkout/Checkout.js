@@ -2,7 +2,7 @@ import * as React from 'react';
 import {  useDispatch, useSelector } from 'react-redux'
 //import { useRealmApp } from "../RealmApp";
 
-import CssBaseline from '@mui/material/CssBaseline';
+//import CssBaseline from '@mui/material/CssBaseline';
 import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Paper from '@mui/material/Paper';
@@ -11,7 +11,7 @@ import Step from '@mui/material/Step';
 import StepLabel from '@mui/material/StepLabel';
 import Button from '@mui/material/Button';
 import Typography from '@mui/material/Typography';
-import { createTheme, ThemeProvider } from '@mui/material/styles';
+//import { createTheme, ThemeProvider } from '@mui/material/styles';
 import SetAppointmentFragment from './setAppointmentFragment';
 import AssignmentIcon from '@mui/icons-material/Assignment';
 
@@ -23,7 +23,7 @@ import { register,addScheduledItem, insertReservation,creditPaymenError ,creditP
 const steps = ['Itinerary', 'Agreements', 'Review'];
 
 
-const theme = createTheme();
+//const theme = createTheme();
 
 /**
  *  Module to take reservations from user. 
@@ -79,7 +79,7 @@ const theme = createTheme();
          else 
           if(currentStep===2) {
             //if we made it this far everything has been validated
-            validated = (whenToPay=='later') || (whenToPay=='now'&& paymentSucceeded);
+            validated = (whenToPay==='later') || (whenToPay==='now'&& paymentSucceeded);
           }
 
       return validated;
@@ -159,20 +159,22 @@ const tmpRes = buildAppointment();
 
   }
 }
+/****
   const handleConfirm = async (event, action) => {
     const stampedEvent = { ...event,
           event_id: event.event_id || Math.random()
         }
     console.log(event, action);
     if (action === "edit") {
-      /** PUT event to remote DB */
+     // PUT event to remote DB 
       console.log('edit');
     } else if (action === "create") {
-      /**POST event to remote DB */
+      // POST event to remote DB 
      // dispatch(addScheduledItem(stampedEvent))
       console.log(stampedEvent.start,'create', typeof stampedEvent.start)
     }
 }
+*/
 
   const handleNext = async (event) => {
           let canContinue = false;

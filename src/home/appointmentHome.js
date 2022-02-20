@@ -1,37 +1,41 @@
-import  React , {useState} from 'react';
-import { useSelector } from 'react-redux'
+import  React  from 'react';
+//import { useSelector } from 'react-redux'
 
 import Card from '@mui/material/Card';
 import Button from '@mui/material/Button';
-import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+/*import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
 import Input from '@mui/material/Input';
 import FullScreenAgendaDialog from '../calendars/fullScreenAgendaDialog.js'
 import  Divider  from '@mui/material/Divider';
-import  Box  from '@mui/material/Box';
+
+import CardActions from '@mui/material/CardActions';
+
+import CssBaseline from '@mui/material/CssBaseline';
+import StarIcon from '@mui/icons-material/StarBorder';
+*/
 import ContactCard from './ContactCard';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
-import CardActions from '@mui/material/CardActions';
-
-import CssBaseline from '@mui/material/CssBaseline';
+import  Box  from '@mui/material/Box';
 import Grid from '@mui/material/Grid';
-import StarIcon from '@mui/icons-material/StarBorder';
-import Typography from '@mui/material/Typography';
-import GlobalStyles from '@mui/material/GlobalStyles';
+
+//import Typography from '@mui/material/Typography';
+//import GlobalStyles from '@mui/material/GlobalStyles';
 import Container from '@mui/material/Container';
 //import {Link as ReactLink} from "react-router-dom";
 import { useNavigate} from "react-router-dom";
 
-import AdminDrawerMenu from './AdminMenu';
-import {  isAdminSelector} from '../constants';
+//import AdminDrawerMenu from './AdminMenu';
+//import {  isAdminSelector} from '../constants';
 
-import { useTheme } from '@mui/material/styles';
-import useMediaQuery from '@mui/material/useMediaQuery';
+//import { useTheme } from '@mui/material/styles';
+//import useMediaQuery from '@mui/material/useMediaQuery';
+/*
 import axios from "axios";
 import log from 'loglevel';
 import qs from 'qs';
-
+*/
 //const selectCardsData = state => state?.siteData?.cardData;
 
 /**
@@ -39,10 +43,10 @@ import qs from 'qs';
  *      a special "admin" menu is available allowing the user to change text
  */
 function AppointmentHome({bgColor}) {
-  const theme = useTheme();
-  const matches = useMediaQuery('(min-width:600px)');
+//  const theme = useTheme();
+//  const matches = useMediaQuery('(min-width:600px)');
   const navigate = useNavigate();
-  const [getCardData] = useState([{title:'View Availability Calendar', imageURL:'https://jaxonetic-github.github.io/React-Appointment-Setter/astroclock.jpeg'},{title:'Book Appointment',imageURL:'openCalendar.jpeg'}])
+//  const [getCardData] = useState([{title:'View Availability Calendar', imageURL:'https://jaxonetic-github.github.io/React-Appointment-Setter/astroclock.jpeg'},{title:'Book Appointment',imageURL:'openCalendar.jpeg'}])
   const url = 'https://jaxonetic-github.github.io/React-Appointment-Setter/coveredInFlowers.jpeg';
 
 

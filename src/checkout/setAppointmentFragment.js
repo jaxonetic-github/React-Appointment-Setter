@@ -6,11 +6,12 @@ import Grid from '@mui/material/Grid';
 import Typography from '@mui/material/Typography';
 import Input from '@mui/material/Input';
 import TextField from '@mui/material/TextField';
-import {PickUpDateAriaLabel,PickUpLocationAriaLabel,DropOffDateAriaLabel,DropOffLocationAriaLabel,
+import {/*PickUpDateAriaLabel,*/PickUpLocationAriaLabel,/*DropOffDateAriaLabel,DropOffLocationAriaLabel,*/
 FirstNameAriaLabel,LastNameAriaLabel,EmailAriaLabel,PasswordAriaLabel,PhoneAriaLabel}  from '../constants'
 //import LocationSelect from './locationSelect.js';
 import CreatableSelect from 'react-select/creatable';
-import {  OnChangeValue } from 'react-select';
+//import {  OnChangeValue } from 'react-select';
+
 /**
  *  Display itinerary specific field for user input
  */

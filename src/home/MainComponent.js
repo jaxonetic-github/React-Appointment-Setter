@@ -9,28 +9,29 @@ import Footer from '../navigation/Footer'
 
 //const driverImg = 'https://application-0-iyetn.mongodbstitch.com/assets/driver1.jpeg';
 //await app.currentUser.refreshCustomData();
-import PropTypes from 'prop-types';
+//import PropTypes from 'prop-types';
+/*
 import AppBar from '@mui/material/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import Typography from '@mui/material/Typography';
 import CssBaseline from '@mui/material/CssBaseline';
-import useScrollTrigger from '@mui/material/useScrollTrigger';
 import Button from '@mui/material/Button';
-import Box from '@mui/material/Box';
 import Card from '@mui/material/Card';
 import CardMedia from '@mui/material/CardMedia';
 import CardContent from '@mui/material/CardContent';
 import CardHeader from '@mui/material/CardHeader';
 import CardActions from '@mui/material/CardActions';
-
+*/
+import Box from '@mui/material/Box';
 import Container from '@mui/material/Container';
 import Slide from '@mui/material/Slide';
-import FullScreenAgendaDialog from '../calendars/fullScreenAgendaDialog.js'
-import {useNavigate} from "react-router-dom";
-import Grid from '@mui/material/Grid';
-import Fade from '@mui/material/Fade';
+//import FullScreenAgendaDialog from '../calendars/fullScreenAgendaDialog.js'
+//import {useNavigate} from "react-router-dom";
+//import Grid from '@mui/material/Grid';
+//import Fade from '@mui/material/Fade';
 import {APPBAR_INITIAL_COLOR, APPBAR_INITIAL_HEIGHT} from '../constants.js'
-import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+//import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
+import useScrollTrigger from '@mui/material/useScrollTrigger';
 
 /**
  *  <Box
@@ -46,7 +47,7 @@ import AirportShuttleIcon from '@mui/icons-material/AirportShuttle';
  */
  function MainComponent ({companyTitle, bannerURL}) {
 const trigger = useScrollTrigger();
-const navigate = useNavigate();
+//const navigate = useNavigate();
 
   return(<Container>
 

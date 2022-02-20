@@ -1,8 +1,8 @@
-import { handleAuthenticationError, parseAuthenticationError, APP_NOTIFICATIONS} from './constants';
+import { handleAuthenticationError, parseAuthenticationError/*, APP_NOTIFICATIONS*/} from './constants';
     import emailjs, { init } from 'emailjs-com';
-import {DEMO_BACKEND_MGR} from './constants';
+//import {DEMO_BACKEND_MGR} from './constants';
 import axios from "axios";
-import log from 'loglevel';
+//import log from 'loglevel';
 import qs from 'qs';
 
 
@@ -108,7 +108,7 @@ return result;
   loginAnonymously = async  ()=> {
 
     const uri = `${this.path}/loginAnonymously`;
-    const data = { 'bar': 123 };
+   // const data = { 'bar': 123 };
 const options = {
   method: 'POST',
   headers: { 'content-type': 'application/x-www-form-urlencoded' },
