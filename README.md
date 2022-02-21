@@ -1,3 +1,4 @@
+[![codecov](https://codecov.io/gh/jaxonetic-github/React-Appointment-Setter/branch/main/graph/badge.svg?token=X5BGG69GQT)](https://codecov.io/gh/jaxonetic-github/React-Appointment-Setter)
 
 
 # Getting Started
@@ -25,7 +26,7 @@ build app and bundle into the build folder
 
 ### `npm run test`
 
-This will run test cases with code coverage
+This will run test cases with code coverage.
 
 ## Demos
 
