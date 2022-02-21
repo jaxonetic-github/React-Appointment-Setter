@@ -2,6 +2,7 @@
   "name": "React-Appointment-Setter",
   "version": "0.1.0",
   "private": true,
+    "homepage": "http://jaxonetic-github.github.io/React-Appointment-Setter/",
   "scripts": {
     "build": "react-scripts build",
     "dev-build": "export SET NODE_OPTIONS=--openssl-legacy-provider && react-scripts build",
