@@ -53,7 +53,7 @@ function Profile({bgColor}) {
 function componentValidated  (){
 
     const validated = (isPhoneValid && isEmailValid  && isFirstNameValid && isLastNameValid);
-
+//console.log(isPhoneValid, isEmailValid, isFirstNameValid, isLastNameValid)
     return validated;
 }
 
@@ -159,10 +159,11 @@ else{setError('Unable to continue, found invalid fields')}
                   type="phone"
                   id="phone"
                   onChange={(event)=>{
-                    const validPhone = !validator.isEmpty(event.target.value);
+                    const validPhone = !validator.isEmpty(event.target.value)  ;
                         if(validPhone){
                         setPhone(event.target.value);
-                        setIsPhoneValid(validPhone);
+                        setIsPhoneValid( validator.isMobilePhone(event.target.value));
+                       console.log(event.target.value," valid? ",validator.isMobilePhone(event.target.value));
                         setError('');
                         } else setError('Invalid or missing Phone');
                       }

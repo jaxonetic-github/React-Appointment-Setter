@@ -63,6 +63,9 @@ console.log(store.getState().reservations);
 
   //expect(true).toBe(true);
 
+  const makeNewReservationButton = screen.getByLabelText('another-reservation');
+  userEvent.click(makeNewReservationButton);
+
 
 });
 

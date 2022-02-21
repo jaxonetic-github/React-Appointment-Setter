@@ -14,6 +14,7 @@ import userEvent from '@testing-library/user-event'
 import {appReducer, editProfile} from '../redux/reducers/appReducer';
 
 import INITIAL_STATE from '../constants.js';
+import validator from 'validator';
 
 describe('Profile Test', () => {
 
@@ -64,6 +65,7 @@ test('Profile dispatches editProfile action', async () => {
     userEvent.type(lastNameField, profile.lastname)
 
     userEvent.click(saveButton);
+    console.log(saveButton.disabled,'--',validator.isMobilePhone(profile.phone))
     expect(useDispatchMock).toHaveBeenCalledWith(editProfile(profile));
 });
 
@@ -89,9 +91,9 @@ test('Profile button not clickable if all fields not valid', async () => {
      const saveButton = screen.getByLabelText('SaveProfile');
 
     userEvent.clear(phone);
-    userEvent.type(phone, '1230900982');
+    userEvent.type(phone, 'pppiuuiui');
 
-      //userEvent.clear(emailField);
+      userEvent.clear(emailField);
     userEvent.type(emailField, 'test@email.com');
 
     userEvent.clear(firstNameField)
@@ -101,7 +103,14 @@ test('Profile button not clickable if all fields not valid', async () => {
     userEvent.type(lastNameField, 'tttttttest')
 
     userEvent.click(saveButton);
-    expect(useDispatchMock).not.toHaveBeenCalledWith(editProfile({firstname:'fntest', lastname:'tttttttest', email:'test@email.com', phone:'1230900982'}));
+    console.log(saveButton.disabled);
+  //expect(useDispatchMock).not.toHaveBeenCalled();
+    userEvent.clear(phone);
+
+ userEvent.type(phone, '2028291798');
+     userEvent.click(saveButton);
+    console.log(saveButton.disabled);
+    expect(useDispatchMock).toHaveBeenCalledWith(editProfile({firstname:'fntest', lastname:'tttttttest', email:'test@email.com', phone:'2028291798'}));
 });
 
 /**afterAll(() => {

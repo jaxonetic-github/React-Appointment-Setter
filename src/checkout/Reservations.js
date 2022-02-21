@@ -36,13 +36,13 @@ function Reservations({bgColor}) {
   const getReservations = useSelector(state=>state?.reservations);
   const navigate = useNavigate();
 
-   const loginSuccessful = useSelector((state)=>state.profile);
-
+  // const loginSuccessful = useSelector((state)=>state.profile);
+/*
      React.useEffect(() => {
         if(!loginSuccessful)
           {console.log('An attempt to view Reservations from an Unauthorized User has been flagged; so, forcing home redirect.');  navigate('/');}  
       },[loginSuccessful, navigate]);
-
+*/
   //const adjustDate = (someDate)=>(someDate && ((typeof someDate) === 'object' )? someDate.toDateString() : someDate);
  
   return (
@@ -80,7 +80,7 @@ function Reservations({bgColor}) {
             </TableRow>
         </TableBody>
       </Table>
-           <Button variant='outlined'  size="large" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>
+           <Button aria-label='another-reservation' variant='outlined'  size="large" onClick={()=>navigate('/checkout')}  sx={{ mt: 2 , color:'605757'}}>
         Make Another Reservation
       </Button>
       </Container>
