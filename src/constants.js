@@ -4,7 +4,7 @@ export const APP_NOTIFICATIONS = true;
 
 /** isAdmin state selector */
 export  const isAdminSelector = state => (state?.app?.app?.currentUser?.customData?.email==='kurawan@yahoo.com') 
-const schedule = [
+export const test_AVAILABILITY =()=> [
     {
       event_id: Math.random(),
       title: "Massage",
@@ -68,7 +68,7 @@ export const INITIAL_STATE={
             backEnd:{}
        },
        app:{...DEMO_BACKEND_MGR},
-  availability:schedule,
+  availability:test_AVAILABILITY(),
   reservations:[RESERVATION],
   profile:{ firstname:"A", lastname:"Z",  email:"az@email.com"},
   siteData:{},

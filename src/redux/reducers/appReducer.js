@@ -274,6 +274,7 @@ export const appReducer = createReducer(INITIAL_STATE, (builder) => {
     })
   .addCase(reloadFromToken, (state, action) => {
       state.trace = action.type;
+      if(state.availability)
       state.availability.push(action.payload);
       return state;
     })
@@ -292,8 +293,12 @@ export const appReducer = createReducer(INITIAL_STATE, (builder) => {
       return state;
     })
   .addCase(addScheduledItemSuccess, (state, action) => {
+    console.log(state.availability[0],'::::',state.availability[1],'+++++++', action,'::::')
       state.trace = action.type;
+   //   if(state.availability)
       state.availability.push(action.payload);
+    console.log('::--2--::',state.availability,'::--2--::')
+
       return state;
     })
   .addCase(fetchScheduledItemsSuccess, (state, action) => {

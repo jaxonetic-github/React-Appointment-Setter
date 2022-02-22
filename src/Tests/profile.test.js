@@ -15,7 +15,9 @@ import {appReducer, editProfile} from '../redux/reducers/appReducer';
 
 import INITIAL_STATE from '../constants.js';
 import validator from 'validator';
-
+/**
+ * Describes test cases for Profile module
+ */
 describe('Profile Test', () => {
 
     const store = configureStore({ reducer: appReducer, INITIAL_STATE })
@@ -92,25 +94,41 @@ test('Profile button not clickable if all fields not valid', async () => {
 
     userEvent.clear(phone);
     userEvent.type(phone, 'pppiuuiui');
+    expect(saveButton.disabled).toBeTruthy();
+    userEvent.clear(phone);
+    userEvent.type(phone, '1230900982');
+    expect(saveButton.disabled).toBeFalsy();
 
-      userEvent.clear(emailField);
+
+    userEvent.clear(emailField);
+    userEvent.type(emailField, 'test@@email.com');
+    expect(saveButton.disabled).toBeTruthy();
+userEvent.clear(emailField);
     userEvent.type(emailField, 'test@email.com');
 
     userEvent.clear(firstNameField)
+    //userEvent.type(firstNameField, 'fntest');
+        console.log(saveButton.disabled,'--',firstNameField.value)
+
+    expect(saveButton.disabled).toBeTruthy();
+    userEvent.clear(firstNameField)
     userEvent.type(firstNameField, 'fntest');
 
+
+    userEvent.clear(lastNameField)
+   // userEvent.type(lastNameField, '')
+    expect(saveButton.disabled).toBeTruthy();
     userEvent.clear(lastNameField)
     userEvent.type(lastNameField, 'tttttttest')
 
     userEvent.click(saveButton);
-    console.log(saveButton.disabled);
+   expect(saveButton.disabled).toBeFalsy();
   //expect(useDispatchMock).not.toHaveBeenCalled();
-    userEvent.clear(phone);
 
- userEvent.type(phone, '2028291798');
+ 
      userEvent.click(saveButton);
     console.log(saveButton.disabled);
-    expect(useDispatchMock).toHaveBeenCalledWith(editProfile({firstname:'fntest', lastname:'tttttttest', email:'test@email.com', phone:'2028291798'}));
+    expect(useDispatchMock).toHaveBeenCalledWith(editProfile({firstname:'fntest', lastname:'tttttttest', email:'test@email.com', phone:'1230900982'}));
 });
 
 /**afterAll(() => {

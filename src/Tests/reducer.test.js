@@ -1,12 +1,14 @@
-import {creditPaymentSuccess,creditPaymenError,
+import {loadAnonymousData, addScheduledItemSuccess, fetchScheduledItemsSuccess,
+  addScheduledItemError, fetchScheduledItemsError,
+  creditPaymentSuccess,creditPaymenError,
   appReducer,registerSuccess,REGISTER_SUCCESS,
   fetchReservations, fetchReservationsSuccess,fetchSiteDataSuccess,fetchSiteData,
   insertReservationSuccess,insertReservation,
-  refreshCustomData,
+  refreshCustomData,reloadFromTokenSuccess, reloadFromToken,loadAnonymousDataSuccess,
   editProfileSuccess,editProfileError, editProfile,
   loadUser,LOAD_USER, loadProfile,login,loginError,LOGIN_ERROR,loginSucceeded,
 logout, LOGOUT,bubbleError,BUBBLE_ERROR,loadBackEnd,FETCH_BACKEND} from '../redux/reducers/appReducer';
-import {INITIAL_STATE,INITIAL_STATE_EMPTY, RESERVATION} from '../constants';
+import {INITIAL_STATE,INITIAL_STATE_EMPTY, RESERVATION, test_AVAILABILITY} from '../constants';
 
 
 const reservation = {
@@ -22,12 +24,62 @@ const reservation = {
   phone:"555-555-5555"};
 
 
+/**
+ * Describes test cases for Reducer actions module
+ */
+describe('Application reducer Test', () => {
+
+test('loadAnonymousData', () => {
+    const altState = {...INITIAL_STATE,trace: loadAnonymousData.type};
+
+  expect(appReducer (INITIAL_STATE, loadAnonymousData({user:{},availability:test_AVAILABILITY()}) )).toEqual( altState  )
+})
+test('addScheduledItemSuccess', () => {
+    const altState = {...INITIAL_STATE,trace: addScheduledItemSuccess.type};
+   altState.availability = [INITIAL_STATE.availability[0],INITIAL_STATE.availability[1], schedule[0]];
+
+  expect(appReducer (INITIAL_STATE, addScheduledItemSuccess(schedule[0]) )).toEqual( altState  )
+})
+test('fetchScheduledItemsSuccess', () => {
+    const altState = {...INITIAL_STATE,trace: fetchScheduledItemsSuccess.type,  availability:schedule};
+
+  expect(appReducer (INITIAL_STATE, fetchScheduledItemsSuccess(schedule) )).toEqual( altState  )
+})
+test('addScheduledItemError', () => {
+    const altState = {...INITIAL_STATE, trace: addScheduledItemError.type, error: "Unable to schedule Item"};
+
+  expect(appReducer (INITIAL_STATE, addScheduledItemError("Unable to schedule Item") )).toEqual( altState  )
+})
+test('fetchScheduledItemsError', () => {
+    const altState = {...INITIAL_STATE,trace: fetchScheduledItemsError.type, error:"Unable to fetch schedules"};
+
+  expect(appReducer (INITIAL_STATE, fetchScheduledItemsError("Unable to fetch schedules") )).toEqual( altState  )
+})
+test('reloadFromTokenSuccess', () => {
+    const altState = {...INITIAL_STATE,trace: reloadFromTokenSuccess.type, user:{}, availability:schedule};
+
+  expect(appReducer (INITIAL_STATE, reloadFromTokenSuccess({user:{},availability:schedule}) )).toEqual( altState  )
+})
+
+test('reloadFromToken', () => {
+    const altState = {...INITIAL_STATE, trace: reloadFromToken.type,availability:schedule};
+   altState.availability = [INITIAL_STATE.availability[0],INITIAL_STATE.availability[1], schedule[0]];
+  const  nextState = appReducer (INITIAL_STATE, reloadFromToken(schedule[0]) );
+  expect(nextState).toEqual( altState  )
+})
+test('loadAnonymousDataSuccess', () => {
+
+    const altState = {...INITIAL_STATE,trace: loadAnonymousDataSuccess.type, availability:schedule, profile:{email:'a@b.com'}, siteData:{}, reservations:RESERVATION};
+
+  expect(appReducer (INITIAL_STATE, loadAnonymousDataSuccess({availability:schedule, profile:{email:'a@b.com'},site:{}, reservations:RESERVATION}) )).toEqual( altState  )
+})
 
 test('refreshCustomData', () => {
     const altState = {...INITIAL_STATE,trace: refreshCustomData.type};
 
   expect(appReducer (INITIAL_STATE, refreshCustomData() )).toEqual( altState  )
 })
+
 test('editProfile', () => {
     const altState = {...INITIAL_STATE,trace: editProfile.type};
 
@@ -127,10 +179,9 @@ test('loginSucceeded', () => {
     authState : {status :'Logged In successfully'}
   };
 
-  console.log("appreducer--->", appReducer (INITIAL_STATE, loginSucceeded( {profile:{email:'test@email.com'}, reservations:[RESERVATION], user:{id:'testid'} } ))) ;
-  expect(appReducer (INITIAL_STATE, loginSucceeded( {customData:{email:'test@email.com'}, reservations:[RESERVATION], user:{id:'testid'} } ))).toEqual(
-altState   
-  )
+const nextState = appReducer (INITIAL_STATE, loginSucceeded( {customData:{email:'test@email.com'}, reservations:[RESERVATION], user:{id:'testid'} } ));
+ // console.log("appreducer--->", appReducer (INITIAL_STATE, loginSucceeded( {profile:{email:'test@email.com'}, reservations:[RESERVATION], user:{id:'testid'} } ))) ;
+  expect(nextState).toEqual( altState    )
 })
 
 
@@ -184,6 +235,6 @@ altState
   )
 })
 
-
+}
 
 

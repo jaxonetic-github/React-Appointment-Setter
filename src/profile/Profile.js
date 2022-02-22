@@ -42,7 +42,6 @@ function Profile({bgColor}) {
   const [error, setError] = React.useState('');
 
   React.useEffect(() => {
-    console.log('Profie:',loggedInUser)
     if(!loggedInUser) {console.log('User with no Profile logged in; so, forcing home redirect.'); navigate("/");}
   },[loggedInUser,navigate/*,firstName,lastName,email,phone*/]);
 
@@ -59,10 +58,11 @@ function componentValidated  (){
 
 
   /**
-   * 
+   * @Desc dispatches the editProfile action if all fields have been validated
+   * @param object  event, usually the HTMLEvent
    */
   const handleSubmit = async (event) => {
-event.preventDefault();
+
 if(componentValidated())  dispatch(editProfile({firstname:firstName, lastname:lastName, email:email, phone:phone}));
 else{setError('Unable to continue, found invalid fields')}
   };
@@ -100,10 +100,14 @@ else{setError('Unable to continue, found invalid fields')}
                       onChange={(event)=>{
                          const validFirstName = !validator.isEmpty(event.target.value);
                         if(validFirstName){
+                          console.log(`event.target.value=${event.target.value}`)
                         setFirstName(event.target.value);
                         setIsFirstNameValid(validFirstName);
-                        setError();
-                        } else setError('Invalid or missing First Name');
+                        setError('');
+                        } else
+                        { setIsFirstNameValid(false)
+                          setError('Invalid or missing First Name');
+                      }
                       }
                   }
 
@@ -124,7 +128,12 @@ else{setError('Unable to continue, found invalid fields')}
                         setLastName(event.target.value);
                         setIsLastNameValid(validLastName);
                         setError('');
-                        } else setError('Invalid or missing Last Name');
+                        } else 
+                      {
+                        setIsLastNameValid(false);
+                        setError('Invalid or missing Last Name');
+                      }
+                      
                       }
                   }
                 />
@@ -142,7 +151,7 @@ else{setError('Unable to continue, found invalid fields')}
                     const validEmail = !validator.isEmpty(event.target.value);
                         if(validEmail){
                         setEmail(event.target.value);
-                        setIsEmailValid(validEmail);
+                        setIsEmailValid(validator.isEmail(event.target.value));
                         setError('');
                         } else setError('Invalid or missing Email');
                       }
@@ -163,7 +172,6 @@ else{setError('Unable to continue, found invalid fields')}
                         if(validPhone){
                         setPhone(event.target.value);
                         setIsPhoneValid( validator.isMobilePhone(event.target.value));
-                       console.log(event.target.value," valid? ",validator.isMobilePhone(event.target.value));
                         setError('');
                         } else setError('Invalid or missing Phone');
                       }
