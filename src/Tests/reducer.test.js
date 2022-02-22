@@ -29,6 +29,8 @@ const reservation = {
  */
 describe('Application reducer Test', () => {
 
+const schedule = test_AVAILABILITY();
+
 test('loadAnonymousData', () => {
     const altState = {...INITIAL_STATE,trace: loadAnonymousData.type};
 
@@ -235,6 +237,6 @@ altState
   )
 })
 
-}
+})
 
 
