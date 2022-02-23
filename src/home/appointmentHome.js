@@ -48,7 +48,7 @@ function AppointmentHome({bgColor}) {
   const navigate = useNavigate();
 //  const [getCardData] = useState([{title:'View Availability Calendar', imageURL:'https://jaxonetic-github.github.io/React-Appointment-Setter/astroclock.jpeg'},{title:'Book Appointment',imageURL:'openCalendar.jpeg'}])
   const url = 'https://jaxonetic-github.github.io/React-Appointment-Setter/coveredInFlowers.jpeg';
-
+const backMassageURL = 'https://raw.githubusercontent.com/jaxonetic-github/React-Appointment-Setter/2171f4ef1528bfbd7b8531abcb4e59ec9de741b3/public/backmassage.png';
 
   return (
     <React.Fragment>
@@ -95,10 +95,11 @@ function AppointmentHome({bgColor}) {
 
 </Grid>
    </CardContent >
-        <CardMedia component="img" alt="banner" image={'backmassage.png'} />
+        <CardMedia sx={{ position:'absolute', height:350}} component="img" alt="back massage" image={backMassageURL} />
 
   </Card>
-   <Box sx={{ margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:350}}>
+
+   <Box sx={{ position:'absolute', top:975, right:'95px' , margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:190}}>
      <Button variant='outlined'  size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
      <Button variant='outlined'  size="small" onClick={(evt)=>{  navigate('/checkout');}} 
       sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>
