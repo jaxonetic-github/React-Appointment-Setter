@@ -26,6 +26,8 @@ import {  isAdminSelector} from '../constants';
 //import { createBrowserHistory } from 'history';
 const selectSiteData = state => state?.siteData?.pageData;
 //const selectAuthedUserDataState = state => state?.app?.currentUser?.customData;
+
+
 /**
  * @description General Info, is the home page.  If User is Admin then 
  *      a special "admin" menu is available allowing the user to change text

@@ -54,6 +54,10 @@ const steps = ['Itinerary', 'Agreements', 'Review'];
   const [paymentSucceeded, setPaymentSucceeded] = React.useState(false);
   const [scheduledItem,setScheduledItem] = React.useState();
 
+/**
+ * Validate the fields according to the step # of the checkout stepper
+ * @param currentStep Int
+ **/
    function itineraryValidated  (currentStep){
     let validated = false;
     if(currentStep===0){
@@ -94,8 +98,10 @@ const buildAppointment =()=>{
                       phone:phone};
                     }
 
+/**
+ * Display specific Component depending on the Stepper's step/state 
+ */
 function getStepContent(step) {
-  
 
 const tmpRes = buildAppointment();
   switch (step) {
@@ -127,7 +133,9 @@ const tmpRes = buildAppointment();
   }
 }
 
-
+/**
+ * Update internal state variables after user input
+ */
  const onChange = (event) =>{
   //console.log(event)
   //  console.log(event.target.name,'---',event.target.value);
@@ -170,6 +178,9 @@ const tmpRes = buildAppointment();
 }
 */
 
+/**
+ *  Event handler for the Next Button
+ */
   const handleNext = async (event) => {
           let canContinue = false;
     if(activeStep === steps.length - 1){

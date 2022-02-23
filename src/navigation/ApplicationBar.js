@@ -114,7 +114,7 @@ function ApplicationBar({companyTitle, barColor, barHeight}) {
                
               </Menu>
       }
-         {hasProfileSelector? `Hello,${authedUserSelector?.firstname}` : hasProfileSelector}
+         {hasProfileSelector? `Hello, ${authedUserSelector?.firstname}` : hasProfileSelector}
         </Toolbar>
       </AppBar>
    
