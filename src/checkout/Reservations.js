@@ -67,7 +67,7 @@ function Reservations({bgColor}) {
         <TableBody>
           {getReservations.map((reservation, index) => 
             (<TableRow key={index}>
-              <TableCell>{new Date(reservation?.createdDate?.toString()).toLocaleString()}</TableCell>
+              <TableCell sx={{width: 135}}>{new Date(reservation?.createdDate?.toString()).toLocaleString()}</TableCell>
               <TableCell><span aria-label='wholename'>{reservation?.firstName}{' '}{reservation?.lastName}</span>
               <Divider/><span aria-label='email'>{reservation?.email}</span><p aria-label='phone'>{reservation?.phone}</p></TableCell>
               <TableCell><span aria-label='pickupLocation'>{reservation?.pickupLocation}</span><p >{new Date( reservation?.pickUpDate).toLocaleString()}</p></TableCell>
