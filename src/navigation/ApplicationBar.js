@@ -32,6 +32,7 @@ function ApplicationBar({companyTitle, barColor, barHeight}) {
   const [anchorEl, setAnchorEl] = React.useState(null);
 //const location = useLocation();
 
+
   const handleMenu = (event) => {
     setAnchorEl(event.currentTarget);
   };

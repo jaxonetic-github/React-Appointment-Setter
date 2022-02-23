@@ -56,7 +56,9 @@ function AppointmentHome({bgColor}) {
 <Container sx={{margin: 0, padding: 0, }}>
     <Grid container spacing={2} sx={{alignItems: 'center'}} >
   <Grid item={true} xs={12} md={5}  >
-     <Card  sx={{ margin: 'auto' ,maxWidth:600}}><CardMedia component="img" alt="banner" image={url} /></Card>
+     <Card  sx={{ margin: 'auto' ,maxWidth:600}}>
+     <CardMedia component="img" alt="banner" image={url} />
+     </Card>
   </Grid>
   <Grid  item={true}  xs={12} md={6} sx={{alignItems: 'center'}}>
   <Card sx={{ margin: 'auto',maxWidth:600}}><CardHeader title={'Massage & Reiki Therapy'}  titleTypographyProps={{ align: 'center' }}     >Massage Therapy</CardHeader>
@@ -93,6 +95,8 @@ function AppointmentHome({bgColor}) {
 
 </Grid>
    </CardContent >
+        <CardMedia component="img" alt="banner" image={'backmassage.png'} />
+
   </Card>
    <Box sx={{ margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:350}}>
      <Button variant='outlined'  size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>

@@ -32,8 +32,12 @@ export class RealmDAO  {
 */
  refreshCustomData = async ()=>{
  await this.app?.currentUser?.refreshCustomData(); 
- return this.app?.currentUser?.customData;
-}
+ return {firstname:(this.app?.currentUser?.customData.firstname||this.app?.currentUser?.customData.firstName), 
+        lastname:(this.app?.currentUser?.customData.lastname||this.app?.currentUser?.customData.lastName),
+        phone:this.app?.currentUser?.customData.phone,
+        email:this.app?.currentUser?.customData.email}
+ };
+
    
 
 /**
@@ -125,7 +129,10 @@ const cookies = new Cookies();
       if(this.app.currentUser?.customData?.email){
        reservations = await this.getReservations(); 
 
-       profile = this.app.currentUser.customData;
+       profile = {firstname:(this.app?.currentUser?.customData.firstname||this.app?.currentUser?.customData.firstName), 
+        lastname:(this.app?.currentUser?.customData.lastname||this.app?.currentUser?.customData.lastName),
+        phone:this.app?.currentUser?.customData.phone,
+        email:this.app?.currentUser?.customData.email};
       }
     return {user: loginResult, site:site, schedule:schedule, reservations:reservations, profile:profile};
     } catch(err)

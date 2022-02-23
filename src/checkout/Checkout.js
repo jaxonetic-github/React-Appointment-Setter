@@ -34,8 +34,8 @@ const steps = ['Itinerary', 'Agreements', 'Review'];
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const [whenToPay, setWhenToPay] = React.useState('later');
-  const [firstName, setFirstName] = React.useState(currentUser?.firstname||'');
-  const [lastName, setLastName] = React.useState(currentUser?.lastname||'');
+  const [firstname, setFirstName] = React.useState(currentUser?.firstname||'');
+  const [lastname, setLastName] = React.useState(currentUser?.lastname||'');
   const [email, setEmail] = React.useState(currentUser?.email||'');
   const [password, setPassword] = React.useState();
   const [error, setError] = React.useState();
@@ -54,12 +54,6 @@ const steps = ['Itinerary', 'Agreements', 'Review'];
   const [paymentSucceeded, setPaymentSucceeded] = React.useState(false);
   const [scheduledItem,setScheduledItem] = React.useState();
 
-  React.useEffect(() => {
- //console.log(`firstNameState = ${firstName}--,`,currentUser);
-    setFirstName(currentUser?.firstname);
-  },[currentUser/*,lastName,email,phone*/]);
-
-
    function itineraryValidated  (currentStep){
     let validated = false;
     if(currentStep===0){
@@ -67,8 +61,8 @@ const steps = ['Itinerary', 'Agreements', 'Review'];
          const emailValidated = email && validator.isEmail(email);
          const pickupLocationValidated =  !validator.isEmpty(pickupLocation);
          const dropOffLocationValidated = true;// !validator.isEmpty(dropOffLocation);
-         const firstNameValidated = firstName && !validator.isEmpty(firstName) ;
-         const lastNameValidated =  lastName && !validator.isEmpty(lastName);
+         const firstNameValidated = firstname && !validator.isEmpty(firstname) ;
+         const lastNameValidated =  lastname && !validator.isEmpty(lastname);
            validated = (phoneValidated && emailValidated && pickupLocationValidated && dropOffLocationValidated && firstNameValidated && lastNameValidated);
        //   console.log(`phone=${phone}, email(${email}),  pickupDate(${pickUpDate}),pickupLocation(${pickupLocation}),dropOffLocationValidated, firstNameValidated(${firstNameValidated}), firstName(${firstName}), lastNameValidated(${lastNameValidated}/ ${lastName})`);
       }else
@@ -92,8 +86,8 @@ const buildAppointment =()=>{
                     dropOffDate:dropOffDate,
                    dropOffLocation:dropOffLocation,
                    pickupLocation:pickupLocation,
-                   firstName:firstName,
-                    lastName:lastName,
+                   firstName:firstname,
+                    lastName:lastname,
                     paid:paymentSucceeded,
                       email:email,
                       createdDate:new Date(),
@@ -189,7 +183,7 @@ const tmpRes = buildAppointment();
           if(password ){
           //register with the email and password
               try{
-             const {error} =  dispatch(register({email, password, firstName,lastName, phone})) ;
+             const {error} =  dispatch(register({email, password, firstname,lastname, phone})) ;
              console.log('result....',error);
              //canContinue = success  ;
              if(error)
