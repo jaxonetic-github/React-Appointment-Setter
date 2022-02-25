@@ -37,6 +37,8 @@ beforeEach(() => {
 
 
 test('SignUp displays expected text', async () => {
+     const profile = {firstname:'fntest', lastname:'tttttttest', email:'jaxonetic@email.com', phone:'1230900982', password:'123456789'};
+
   useSelectorMock.mockReturnValue(INITIAL_STATE);
 
      render( <ReactRedux.Provider store={store}><BrowserRouter>
@@ -57,6 +59,22 @@ test('SignUp displays expected text', async () => {
   const lastNameField = screen.getByLabelText('LastName');
  
  const signInLink = screen.getByLabelText(`signInLink`);
+
+
+    userEvent.clear(emailField);
+    userEvent.type(emailField, profile.email);
+
+    userEvent.clear(firstNameField)
+    userEvent.type(firstNameField, profile.firstname);
+
+    userEvent.clear(lastNameField)
+    userEvent.type(lastNameField, profile.lastname)
+
+    userEvent.clear(passwordField)
+    userEvent.type(passwordField, profile.password)
+
+  const submitButton = screen.getByLabelText('Submit');
+  userEvent.click(submitButton);
 
 });
 

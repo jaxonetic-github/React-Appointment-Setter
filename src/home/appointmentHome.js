@@ -94,12 +94,13 @@ const backMassageURL = 'https://raw.githubusercontent.com/jaxonetic-github/React
     </Grid>
 
 </Grid>
+
    </CardContent >
-        <CardMedia sx={{ position:'absolute', height:350}} component="img" alt="back massage" image={backMassageURL} />
 
   </Card>
+        <CardMedia sx={{ height:350}} component="img" alt="back massage" image={backMassageURL} />
 
-   <Box sx={{ position:'absolute', top:975, right:'95px' , margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:190}}>
+   <Box sx={{  margin:'auto', justifyContent: 'space-around' ,  py:8, maxWidth:190}}>
      <Button variant='outlined'  size="small" onClick={()=>navigate('/availabilityCalendar')}  sx={{ mt: 2 , color:'605757'}}>{'View Availability'} </Button>
      <Button variant='outlined'  size="small" onClick={(evt)=>{  navigate('/checkout');}} 
       sx={{ mt: 2 , color:'605757'}}>{'Book Appointment'} </Button>

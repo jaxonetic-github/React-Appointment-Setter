@@ -162,6 +162,7 @@ const cookies = new Cookies();
  * 
  */
   registerWithEmail =async  (registerData)=> {
+    //console.log('registerWithEmail*********',this.app)
     try{
      // const args = {email,password,firstName, lastName, phone};
      //  dispatch(register(args));

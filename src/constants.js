@@ -51,6 +51,9 @@ export const DEMO_BACKEND_MGR={
       logIn:(()=>true),
       logOut:(()=>true),
       app:DEMO_REALMAPP,
+      emailPasswordAuth:{
+        registerUser:()=>true
+      },
       loginAnonymously:(()=>true),
       getSiteData:(()=>({pageData:HOME_PAGE_DEFAULT, cardData:TIERS, contactData:CONTACTINFO,screen:''})),
       getReservations:(()=>[{...RESERVATION}]),
